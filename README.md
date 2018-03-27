@@ -33,7 +33,7 @@ To get colored output on Windows, use PowerShell interpreter (ideally you should
 
 You can start PowerShell in the same context folder by clicking "Files" in Windows Explorer as below:
 
-![Alt text](https://raw.githubusercontent.com/lucabrasi83/jinja2_template_gen_v2/master/doc_screenshots/open_powershell.png)
+![Alt text](https://raw.githubusercontent.com/lucabrasi83/jinja2_template_gen_v2/master/doc_screenshots/openpowershell.png)
 
 
 Make sure you the required libraries installed by running command ```pip install -r requirements.txt```
