@@ -1,0 +1,9 @@
+---
+b2b_global_subnet: 10.91.79.64/30
+pri_cpe_wan_log_interface_name: GigabitEthernet0/0/0.111
+pri_cpe_wan_phy_interface_name: GigabitEthernet0/0/0
+primary_cpe_hostname: CGB-DK-VAL-G-MPLS-01-R-1
+primary_cpe_wan_subnet: 10.91.70.116/30
+site_name: CGB-DK-VAL
+template_file: CGB/CGB_PLATINUM_VC_DAY1_PRI_TEMPLATE.frmtpl
+...
