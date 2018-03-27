@@ -3,3 +3,5 @@
 *.pyo
 *.pyc
 __pycache__/
+Templates_Generated/*
+Templates_Inputs/*
