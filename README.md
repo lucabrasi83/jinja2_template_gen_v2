@@ -10,5 +10,5 @@ If you use GitHub Desktop, specify the following repository URL: ```https://gith
 
 From your GitHub desktop client, click Clone Repository:
 
-![Alt text](doc_screenshots/github_gui_clone.png?raw=true "Click Clone Respository")
+![Alt text](https://raw.githubusercontent.com/lucabrasi83/jinja2_template_gen_v2/master/doc_screenshots/github_gui_clone.png "Click Clone Respository")
 
