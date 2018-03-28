@@ -3,7 +3,7 @@
 Jinja2 Template Generation for Anuta NCX
 
 
-The tool gives the ability to edit Anuta NCX form templates using Jinja2 Template Engine.
+The tool gives the ability to generate Anuta NCX form templates using Jinja2 Template Engine.
 
 
 Details on how to define template variables, expressions and filters can be found here: [**Jinja2 Template Designer Documentation**](http://jinja.pocoo.org/docs/2.10/templates/)<br>
@@ -37,7 +37,7 @@ If you use GitHub Desktop, specify the following repository URL: ```https://gith
 From your GitHub desktop client, click Clone Repository:
 
 
-![Alt text](https://raw.githubusercontent.com/lucabrasi83/jinja2_template_gen_v2/master/doc_screenshots/github_gui_clone_repo.png)
+![Alt text](doc_screenshots/github_gui_clone_repo.png?raw=true)
 
 
 
