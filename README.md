@@ -44,14 +44,14 @@ From your GitHub desktop client, click Clone Repository:
 Enter Repository URL as below and select local folder where you want repository to be cloned:
 
 
-![Alt text](https://raw.githubusercontent.com/lucabrasi83/jinja2_template_gen_v2/master/doc_screenshots/github_gui_clone.png)
+![Alt text](doc_screenshots/github_gui_clone.png?raw=true)
 
 
 
 After Repository is cloned, verify folder GitHub/jinja2_template_gen_v2 exists in folder specified as above:
 
 
-![Alt text](https://raw.githubusercontent.com/lucabrasi83/jinja2_template_gen_v2/master/doc_screenshots/windows_github_folder.png)
+![Alt text](doc_screenshots/windows_github_folder.png?raw=true)
 
 
 
@@ -61,7 +61,7 @@ To get colored output on Windows, use PowerShell interpreter (ideally you should
 You can start PowerShell in the same context folder by clicking "Files" in Windows Explorer as below:
 
 
-![Alt text](https://raw.githubusercontent.com/lucabrasi83/jinja2_template_gen_v2/master/doc_screenshots/openpowershell.png)
+![Alt text](doc_screenshots/openpowershell.png?raw=true)
 
 
 
@@ -71,7 +71,7 @@ Make sure you the required libraries installed by running command ```pip install
 If you have multiple Python versions installed, you may need to run ```pip3 install -r requirements.txt```
 
 
-![Alt text](https://raw.githubusercontent.com/lucabrasi83/jinja2_template_gen_v2/master/doc_screenshots/pip_install_requirements.png)
+![Alt text](doc_screenshots/pip_install_requirements.png?raw=true)
 
 
 
@@ -81,7 +81,7 @@ Verify Tool by entering command in PowerShell prompt: ```python start.py -h```
 You should get below output with help context:
 
 
-![Alt text](https://raw.githubusercontent.com/lucabrasi83/jinja2_template_gen_v2/master/doc_screenshots/start_py_help.png)
+![Alt text](doc_screenshots/start_py_help.png?raw=true)
 
 
 
@@ -100,7 +100,7 @@ The tool is structured in 3 folders:
 
 Example below displays the output of this command:
 
-![Alt text](https://raw.githubusercontent.com/lucabrasi83/jinja2_template_gen_v2/master/doc_screenshots/extract_var.png)
+![Alt text](doc_screenshots/extract_var.png?raw=true)
 
 
 2. To generate YAML file inputs from variables defined in base template, run command: ```python start.py -gi <TREEGRAM>/<BASE_TEMPLATE_FILE>```
