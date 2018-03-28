@@ -1,0 +1,209 @@
+{
+    "schemaPath": "/controller:services/cpedeployment:managed-cpe-services/customer/adaptive-dps-eem-applet/adaptive-dps-eem-applet-services",
+    "root0": {
+        "childForms": {
+            "adaptive-dps-eem-applet-services0": {
+                "nodeType": "adaptive-dps-eem-applet-services",
+                "transaction-id": "ADPS-HU-BEGIN-{{ site_name }}",
+                "applet-name": "HIGH_UTILISATION_BEGIN",
+                {% if site_type == "single-cpe" %}
+                "single-cpe-site": true,
+                "single-cpe-sites": "{{ site_name }}",
+                {% elif site_type == "dual-cpe" %}
+                "dual-cpe-site": true,
+                "dual-cpe-sites": "{{ site_name }}",
+                {% elif site_type == "single-cpe-dual-wan" %}
+                "single-cpe-dual-wan-site": true,
+                "single-cpe-dual-wan-sites": "{{ site_name }}",
+                {% elif site_type == "dual-cpe-dual-wan" %}
+                "dual-cpe-dual-wan-site": true,
+                "dual-cpe-dual-wan-sites": "{{ site_name }}",
+                {% elif site_type == "triple-cpe" %}
+                "triple-cpe-site": true,
+                "triple-cpe-sites": "{{ site_name }}",
+                {% endif %}
+                {% if site_type == "single-cpe" %}
+                "cpe": "cpe",
+                {% elif site_type == "dual-cpe" %}
+                "cpe": "cpe-primary",
+                {% elif site_type == "dual-cpe-dual-wan" %}
+                "cpe": "cpe-primary",
+                {% elif site_type == "single-cpe-dual-wan" %}
+                "cpe": "cpe",
+                {% elif site_type == "triple-cpe" %}
+                "cpe": "cpe-primary",
+                {% endif %}
+                "taskId_h": "",
+                "propName_h": "",
+                "oldPropName_h": "",
+                "allowedOwners": "system",
+                "allowedToShareWith": [
+                    "all"
+                ],
+                "childForms": {
+                    "trigger-1UDuehk8SEuljRIPBWg--g": {
+            "childForms": {
+              "correlate-M05_CNeLTEe2L1bMQ6cwDg": {
+                "event1": "1",
+                "logic": "or",
+                "nodeType": "correlate",
+                "event2": "2"
+              }
+            },
+            "delay-time": 1,
+            "nodeType": "trigger"
+          },
+          "events-bbPCsSZ5SnuDIbmI8qhb_Q": {
+            "childForms": {
+              "tag-abNfJIs0Q9iNGuSIEo1Tdw": {
+                "entry-counter-val": 178,
+                "tag-number": "2",
+                "interface-name": "{{ wan_phy_intf_name }}",
+                "parameter": "rxload",
+                "entry-compare": "ge",
+                "poll-interval": 30,
+                "nodeType": "tag"
+              },
+              "tag-CFkJNqU_Q2qG3Uo_44Pmfw": {
+                "entry-counter-val": 178,
+                "tag-number": "1",
+                "interface-name": "{{ wan_phy_intf_name }}",
+                "parameter": "txload",
+                "entry-compare": "ge",
+                "poll-interval": 30,
+                "nodeType": "tag"
+              }
+            },
+            "nodeType": "events"
+          },
+          "actions-LSbZWPt3R4aTJwW10uZZ6g": {
+            "childForms": {
+              "action-MFVYW9UES6-ecIgHtlZU8A": {
+                "cli-string": "no route-map QPPB-POLICY permit 10",
+                "cli-type": "command",
+                "label": "1.28",
+                "nodeType": "action",
+                "action-statement": "cli"
+              },
+              "action-Vphe8hqPS3e2CS2uEEB2Xw": {
+                "cli-string": "show route-map QPPB-POLICY | incl sequence 10",
+                "cli-type": "command",
+                "label": "1.16",
+                "nodeType": "action",
+                "action-statement": "cli"
+              },
+              "action-rh0QEFIJSzOhDmKzWnJD8Q": {
+                "compare": "eq",
+                "second-operand": "1",
+                "first-operand": "$_regexp_result",
+                "label": "1.22",
+                "nodeType": "action",
+                "action-statement": "if"
+              },
+              "action-mCX-YZv9TxOaLlGsI80J8w": {
+                "cli-string": "set community 300:300 100:1",
+                "cli-type": "command",
+                "label": "1.36",
+                "nodeType": "action",
+                "action-statement": "cli"
+              },
+              "action-JTUltKXOQ7qy1R2HxpAang": {
+                "comment-string": "Do nothing here",
+                "label": "1.72",
+                "nodeType": "action",
+                "action-statement": "comment"
+              },
+              "action-cgCcqBA-TC2QcZ6sFDxiLQ": {
+                "label": "1.73",
+                "nodeType": "action",
+                "action-statement": "end"
+              },
+              "action-_aSsVYG5RQeDKxV3idGxkA": {
+                "cli-string": "no set community 300:300 100:1 100:2",
+                "cli-type": "command",
+                "label": "1.35",
+                "nodeType": "action",
+                "action-statement": "cli"
+              },
+              "action-E8FQ98epQN-so_e3vS-VkA": {
+                "cli-string": "conf t",
+                "cli-type": "command",
+                "label": "1.25",
+                "nodeType": "action",
+                "action-statement": "cli"
+              },
+              "action-7xFIqTKdQe-90dbOsviYJg": {
+                "syslog-priority": "debugging",
+                "syslog-msg": "DPS: HIGH utilisation Recorded, DPS OPERATING MODE SET TO AGGRESSIVE",
+                "label": "1.60",
+                "syslog-type": "priority",
+                "nodeType": "action",
+                "action-statement": "syslog"
+              },
+              "action-dVSj0o7qTyeEe4T7rmRLnw": {
+                "label": "1.71",
+                "exit-result": "0",
+                "nodeType": "action",
+                "action-statement": "exit"
+              },
+              "action-Y3aZniJtS7GMUZ2BDFCm6g": {
+                "cli-string": "enable",
+                "cli-type": "command",
+                "label": "1.13",
+                "nodeType": "action",
+                "action-statement": "cli"
+              },
+              "action-40VGhSWiSL2UtNE08dUWgw": {
+                "cli-string": "end",
+                "cli-type": "command",
+                "label": "1.40",
+                "nodeType": "action",
+                "action-statement": "cli"
+              },
+              "action-JpKSbvxZSjWK47oKMN3pxA": {
+                "cli-string": "clear ip bgp * soft",
+                "cli-type": "command",
+                "label": "1.50",
+                "nodeType": "action",
+                "action-statement": "cli"
+              },
+              "action-O6yxI_1zRGqv9gsOHDR-Dw": {
+                "handle-error-type": "ignore",
+                "label": "1.10",
+                "nodeType": "action",
+                "action-statement": "handle-error"
+              },
+              "action-jiD8tKTRSTWxmhlMtNYY7w": {
+                "cli-string": "route-map CONNECTED-MED permit 10",
+                "cli-type": "command",
+                "label": "1.33",
+                "nodeType": "action",
+                "action-statement": "cli"
+              },
+              "action-zrTpFVjdTpau7TY10TfsOQ": {
+                "label": "1.70",
+                "nodeType": "action",
+                "action-statement": "else"
+              },
+              "action-Nsth-nCyTxCETac6b9swiQ": {
+                "regex-pattern": "^(route-map QPPB-POLICY, permit, sequence 10)",
+                "label": "1.19",
+                "input-string": "$_cli_result",
+                "nodeType": "action",
+                "action-statement": "regexp"
+              },
+              "action-UomLlR-iQK-j0N4IWbHuew": {
+                "cli-string": "clear ip route *",
+                "cli-type": "command",
+                "label": "1.51",
+                "nodeType": "action",
+                "action-statement": "cli"
+              }
+            },
+            "nodeType": "actions"
+          }
+        }
+                }
+            }
+        }
+    }

@@ -1,9 +1,0 @@
----
-b2b_global_subnet: null
-pri_cpe_wan_log_interface_name: null
-pri_cpe_wan_phy_interface_name: null
-primary_cpe_hostname: null
-primary_cpe_wan_subnet: null
-site_name: null
-template_file: CGB/CGB_GOLD_VC_DAY1_PRI_TEMPLATE.frmtpl
-...

@@ -1,9 +1,0 @@
----
-dps_b2b_subnet: 10.91.79.76/30
-dps_b2b_vlan_id: 911
-dps_loopback_ip: 10.91.76.90
-dps_tunnel_interface_ip: 10.91.75.90
-secondary_cpe_b2b_phy_interface_name: GigabitEthernet0/0/2
-site_name: CGB-DK-VAL
-template_file: CGB/CGB_PLATINUM_VC_DPS_TEMPLATE.frmtpl
-...

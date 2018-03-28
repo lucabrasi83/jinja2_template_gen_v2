@@ -1,8 +1,0 @@
----
-b2b_global_subnet: 10.91.79.64/30
-sec_cpe_wan_log_interface_name: GigabitEthernet0/0/0
-sec_cpe_wan_phy_interface_name: GigabitEthernet0/0/0
-secondary_cpe_hostname: CGB-DK-VAL-IP-IZOIW-01-R-1
-site_name: CGB-DK-VAL
-template_file: CGB/CGB_PLATINUM_VC_DAY1_SEC_TEMPLATE.frmtpl
-...

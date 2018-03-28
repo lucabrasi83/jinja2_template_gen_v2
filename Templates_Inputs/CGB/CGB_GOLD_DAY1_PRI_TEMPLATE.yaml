@@ -1,8 +1,0 @@
----
-b2b_global_subnet: 10.91.73.0/30
-pri_cpe_wan_phy_interface_name: GigabitEthernet0/0/0
-pri_cpe_wan_log_interface_name: GigabitEthernet0/0/0
-primary_cpe_hostname: CGB-NO-LAR-IP-IZOIW-01-R-1
-site_name: CGB-NO-LAR
-template_file: CGB/CGB_GOLD_DAY1_PRI_TEMPLATE.frmtpl
-...

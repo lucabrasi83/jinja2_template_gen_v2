@@ -65,7 +65,7 @@ def generate_frmtpl(_yaml_file):
 
     except json.JSONDecodeError:
         print("\033[91m", "Error when serializing JSON payload! Raw payload saved in", path,  "\033[0m", "\n")
-        with open(path + '/' + _frmtpl_file_name + '_raw', 'w') as f_raw_obj:
+        with open(path + '/' + _frmtpl_file_name.split('/')[1] + '_raw', 'w') as f_raw_obj:
             f_raw_obj.write(template_output)
         traceback.print_exc()
         sys.exit()

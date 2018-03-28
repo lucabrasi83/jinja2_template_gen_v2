@@ -38,13 +38,13 @@ def yaml_input_gen(file):
     if '.frmtpl' in file:
         file = file.split('.frmtpl')[0]
 
-    path = 'Templates_Inputs/'
+    path = 'Templates_Inputs/' + file.split('/')[0]
     if not os.path.exists(path):
         os.makedirs(path, exist_ok=True)
 
     try:
         # Create YAML input file with variable
-        with open(path + '/' + file + '.yaml', 'w') as template_gen_yaml_obj:
+        with open(path + '/' + file.split('/')[1] + '.yaml', 'w') as template_gen_yaml_obj:
             yaml.dump(template_vars, template_gen_yaml_obj, default_flow_style=False, explicit_start=True,
                       explicit_end=True)
         print('\033[92m', "Input File", file +'.yaml', "Successfully generated in", path + ' folder.' + '\033[0m')

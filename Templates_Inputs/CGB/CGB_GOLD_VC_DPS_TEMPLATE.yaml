@@ -1,9 +1,0 @@
----
-dps_b2b_subnet: null
-dps_b2b_vlan_id: null
-dps_loopback_ip: null
-dps_tunnel_interface_ip: null
-secondary_cpe_b2b_phy_interface_name: null
-site_name: null
-template_file: CGB/CGB_GOLD_VC_DPS_TEMPLATE.frmtpl
-...

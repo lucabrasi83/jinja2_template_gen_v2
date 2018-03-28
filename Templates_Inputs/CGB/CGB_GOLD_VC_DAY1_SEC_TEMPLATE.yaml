@@ -1,8 +1,0 @@
----
-b2b_global_subnet: null
-sec_cpe_wan_log_interface_name: null
-sec_cpe_wan_phy_interface_name: null
-secondary_cpe_hostname: null
-site_name: null
-template_file: CGB/CGB_GOLD_VC_DAY1_SEC_TEMPLATE.frmtpl
-...
