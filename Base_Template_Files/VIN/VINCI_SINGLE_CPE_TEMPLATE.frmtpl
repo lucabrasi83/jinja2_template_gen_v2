@@ -1,0 +1,272 @@
+{
+    "schemaPath": "/controller:services/cpedeployment:managed-cpe-services/customer/single-cpe-site/single-cpe-site-services",
+    "root0": {
+        "childForms": {
+            "single-cpe-site-services0": {
+                "nodeType": "single-cpe-site-services",
+                "site-name": "{{site_name}}",
+                "bgp-as": "",
+                "zero-touch-prov": false,
+                "description": "",
+                "resource-pool": "{{site_name}}",
+                "taskId_h": "",
+                "propName_h": "",
+                "oldPropName_h": "",
+                "allowedCascadeOwner": false,
+                "allowedCascadeSharedWith": false,
+                "allowedOwners": "system",
+                "allowedToShareWith": [
+                    "all"
+                ],
+                "childForms": {
+                    "cpe0": {
+                        "nodeType": "cpe",
+                        "name": "cpe",
+                        "device-ip": "{{cpe_hostname}}",
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                            "vrfs0": {
+                                "nodeType": "vrfs",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "vrf0": {
+                                        "nodeType": "vrf",
+                                        "name": "GLOBAL",
+                                        "vrf-name": "GLOBAL",
+                                        "bgp-settings": true,
+                                        
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    }
+                                }
+                            },
+                            "ip-sla1": {
+                                "nodeType": "ip-sla",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "responder-options0": {
+                                        "nodeType": "responder-options",
+                                        "option-name": "responderopts",
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "sla1": {
+                                        "nodeType": "sla",
+                                        "entry-number": "1010",
+                                       
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "sla2": {
+                                        "nodeType": "sla",
+                                        "entry-number": "1011",
+                                        
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "sla3": {
+                                        "nodeType": "sla",
+                                        "entry-number": "1012",
+                                       
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "sla4": {
+                                        "nodeType": "sla",
+                                        "entry-number": "1021",
+                                       
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "sla5": {
+                                        "nodeType": "sla",
+                                        "entry-number": "1022",
+                                       
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "wan1": {
+                        "nodeType": "wan",
+                        "name": "wan",
+                        "wan-connectivity": "MPLS",
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ]
+                    },
+                    "cpe-wan2": {
+                        "nodeType": "cpe-wan",
+                        "interconnect-name": "cpe-wan",
+                        "hierarchical-outbound-policy": true,
+                        "outbound-policy": null,
+                        "policy-name": "SHAPING-QOS",
+                        
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                            "end-points0": {
+                                "nodeType": "end-points",
+                                "endpoint-name": "WAN-1",
+                                "device-ip": "{{cpe_hostname}}",
+                                "fvrf": null,
+                                "ivrf": null,
+                                "vrf": null,
+                                "interface-type": "Physical",
+                                "interface-name": "{{cpe_wan_physical_interface_name}}",
+                                
+                                
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "bgp-peers0": {
+                                        "nodeType": "bgp-peers",
+                                        "BGP-peer-name": "PEER-1",
+                                        "peer-ip": "115.114.227.246",
+                                       
+                                        "timers": true,
+                                       
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "bgp-peers1": {
+                                        "nodeType": "bgp-peers",
+                                        "BGP-peer-name": "PEER-2",
+                                        "peer-ip": "115.114.227.247",
+                                       
+                                        "timers": true,
+                                       
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "lan3": {
+                        "nodeType": "lan",
+                        "name": "lan",
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ]
+                        {% if switch_hostname != None %}
+                        ,
+                        "childForms": {
+                            "switches0": {
+                                "nodeType": "switches",
+                                "device": "{{switch_hostname}}",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            }
+                        }
+                    {% endif %}
+                    },
+                    "cpe-lan4": {
+                        "nodeType": "cpe-lan",
+                        "interconnect-name": "cpe-lan",
+                        "bits-sustained": null,
+                        "bits-excess": null,
+                        "load-interval-delay": null,
+                        "in-queue-length": null,
+                        "out-queue-length": null,
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
