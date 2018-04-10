@@ -4,7 +4,7 @@
     "childForms": {
       "dps-services0": {
         "nodeType": "dps-services",
-        "name": "DPS-Service-Template",
+        "name": "{{site_name}}",
         "single-cpe-site": false,
         "single-cpe-sites": null,
         "dual-cpe-site": true,
