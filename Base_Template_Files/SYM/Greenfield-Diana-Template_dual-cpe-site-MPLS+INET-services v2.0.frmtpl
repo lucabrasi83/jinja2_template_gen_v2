@@ -1488,7 +1488,7 @@
                 "nodeType": "end-points",
                 "endpoint-name": "eas-tunnel1",
                 "device-ip": "{{cpe_secondary}}",
-                "fvrf": null,
+                "fvrf": INTERNET,
                 "ivrf": null,
                 "vrf": null,
                 "interface-type": "Tunnel",

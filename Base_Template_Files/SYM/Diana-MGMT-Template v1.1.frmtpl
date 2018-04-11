@@ -804,3 +804,208 @@
                 "allowedOwners": "system",
                 "allowedToShareWith": [
                   "all"
+                ]
+              },
+              "snmp-mib8": {
+                "nodeType": "snmp-mib",
+                "mib-persistence": "circuit",
+                "taskId_h": "",
+                "propName_h": "",
+                "oldPropName_h": "",
+                "allowedOwners": "system",
+                "allowedToShareWith": [
+                  "all"
+                ]
+              },
+              "snmp-mib9": {
+                "nodeType": "snmp-mib",
+                "mib-persistence": "dsmib",
+                "taskId_h": "",
+                "propName_h": "",
+                "oldPropName_h": "",
+                "allowedOwners": "system",
+                "allowedToShareWith": [
+                  "all"
+                ]
+              }
+            }
+          },
+          "netflow11": {
+            "nodeType": "netflow",
+            "allowedOwners": "system",
+            "allowedToShareWith": [
+              "all"
+            ],
+            "childForms": {
+              "netflow0": {
+                "nodeType": "netflow",
+                "allowedOwners": "system",
+                "allowedToShareWith": [
+                  "all"
+                ],
+                "childForms": {
+                  "flow-records0": {
+                    "nodeType": "flow-records",
+                    "allowedOwners": "system",
+                    "allowedToShareWith": [
+                      "all"
+                    ],
+                    "childForms": {
+                      "flow-record0": {
+                        "nodeType": "flow-record",
+                        "name": "IZO-PRIME-RECORD",
+                        "description": "Flexible NetFlow with NBAR Flow Record",
+                        "record-type": null,
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                          "all"
+                        ]
+                      }
+                    }
+                  },
+                  "flow-exports1": {
+                    "nodeType": "flow-exports",
+                    "legacy-netflow": false,
+                    "source": null,
+                    "interface-names": false,
+                    "version": null,
+                    "taskId_h": "",
+                    "propName_h": "",
+                    "oldPropName_h": "",
+                    "allowedOwners": "system",
+                    "allowedToShareWith": [
+                      "all"
+                    ],
+                    "childForms": {
+                      "flow-export0": {
+                        "nodeType": "flow-export",
+                        "name": "IZO-PRIME-EXPORT",
+                        "description": "FNF v9",
+                        "destination": "121.244.196.26",
+                        "source": "Loopback0 | system",
+                        "vrf": null,
+                        "udp-port-value": null,
+                        "template-timeout": null,
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                          "all"
+                        ]
+                      }
+                    }
+                  },
+                  "flow-monitors2": {
+                    "nodeType": "flow-monitors",
+                    "allowedOwners": "system",
+                    "allowedToShareWith": [
+                      "all"
+                    ],
+                    "childForms": {
+                      "flow-monitor0": {
+                        "nodeType": "flow-monitor",
+                        "name": "IZO-PRIME-MONITOR",
+                        "record-type": null,
+                        "description": "FNF Traffic Analysis",
+                        "record": "IZO-PRIME-RECORD",
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                          "all"
+                        ],
+                        "childForms": {
+                          "exporters0": {
+                            "nodeType": "exporters",
+                            "allowedOwners": "system",
+                            "allowedToShareWith": [
+                              "all"
+                            ],
+                            "childForms": {
+                              "exporter0": {
+                                "nodeType": "exporter",
+                                "exporter": "IZO-PRIME-EXPORT",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                  "all"
+                                ]
+                              }
+                            }
+                          },
+                          "interfaces1": {
+                            "nodeType": "interfaces",
+                            "allowedOwners": "system",
+                            "allowedToShareWith": [
+                              "all"
+                            ],
+                            "childForms": {
+                              "interface0": {
+                                "nodeType": "interface",
+                                "interface": "{{WAN_Interface}}",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                  "all"
+                                ]
+                              },
+                              "interface1": {
+                                "nodeType": "interface",
+                                "interface": "{{B2B_Interface}}",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                  "all"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "features12": {
+            "nodeType": "features",
+            "cdp": "disable",
+            "domain-lookup": "disable",
+            "tcp-small-servers": "disable",
+            "udp-small-servers": "disable",
+            "finger": "disable",
+            "source-route": null,
+            "bootp-server": null,
+            "http-server": "disable",
+            "http-secure-server": "disable",
+            "banner-exec": null,
+            "banner-exec-string": "",
+            "banner-login": null,
+            "banner-login-string": "",
+            "banner-motd": null,
+            "banner-motd-string": "",
+            "taskId_h": "",
+            "propName_h": "",
+            "oldPropName_h": "",
+            "allowedOwners": "system",
+            "allowedToShareWith": [
+              "all"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
