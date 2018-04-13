@@ -120,7 +120,7 @@
           "cpe-name1": {
             "nodeType": "cpe-name",
             "cpe": "cpe-secondary",
-            "vrf": "DPS | system",
+            "vrf": "",
             "lan-interface": false,
             "hierarchical-inbound-policy": false,
             "hierarchical-policy": null,
