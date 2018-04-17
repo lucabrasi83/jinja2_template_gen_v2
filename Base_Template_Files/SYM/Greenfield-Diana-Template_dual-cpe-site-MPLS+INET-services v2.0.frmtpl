@@ -644,8 +644,8 @@
                 "childForms": {
                   "static-route0": {
                     "nodeType": "static-route",
-                    "dest-ip-address": "{{Diana_LAN_Subnet}}",
-                    "dest-mask": "{{Diana_LAN_Subnet_Mask}}",
+                    "dest-ip-address": "{{Diana_LAN_Subnet_Route}}",
+                    "dest-mask": "{{Diana_LAN_Subnet_Route_Mask}}",
                     "taskId_h": "",
                     "propName_h": "",
                     "oldPropName_h": "",
@@ -656,7 +656,7 @@
                     "childForms": {
                       "options0": {
                         "nodeType": "options",
-                        "id": "ip route {{Diana_LAN_Subnet}} {{Diana_LAN_Subnet_Mask}} {{R1_LAN_Interface}} {{Diana_LAN_NextHop}} tag 100 name LANSummaryNetwork",
+                        "id": "ip route {{Diana_LAN_Subnet_Route}} {{Diana_LAN_Subnet_Route_Mask}} {{R1_LAN_Interface}} {{Diana_LAN_NextHop}} tag 100 name LANSummaryNetwork",
                         "next-hop-ip": "{{Diana_LAN_NextHop}}",
                         "global-address": false,
                         "metric": null,
@@ -1021,8 +1021,8 @@
                   },
                   "static-route1": {
                     "nodeType": "static-route",
-                    "dest-ip-address": "{{Diana_LAN_Subnet}}",
-                    "dest-mask": "{{Diana_LAN_Subnet_Mask}}",
+                    "dest-ip-address": "{{Diana_LAN_Subnet_Route}}",
+                    "dest-mask": "{{Diana_LAN_Subnet_Route_Mask}}",
                     "taskId_h": "",
                     "propName_h": "",
                     "oldPropName_h": "",
@@ -1033,7 +1033,7 @@
                     "childForms": {
                       "options0": {
                         "nodeType": "options",
-                        "id": "ip route {{Diana_LAN_Subnet}} {{Diana_LAN_Subnet_Mask}} {{R2_LAN_Interface}} {{Diana_LAN_NextHop}} tag 100 name LANSummaryNetwork",
+                        "id": "ip route {{Diana_LAN_Subnet_Route}} {{Diana_LAN_Subnet_Route_Mask}} {{R2_LAN_Interface}} {{Diana_LAN_NextHop}} tag 100 name LANSummaryNetwork",
                         "next-hop-ip": "{{Diana_LAN_NextHop}}",
                         "global-address": false,
                         "metric": null,
