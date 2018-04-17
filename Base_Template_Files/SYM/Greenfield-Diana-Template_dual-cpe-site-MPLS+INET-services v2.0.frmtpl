@@ -1313,7 +1313,7 @@
                     "BGP-peer-name": "GVPN",
                     "peer-ip": "{{R1_WAN_MPLS_PE_IP}}",
                     "peer-description": "",
-                    "remote-as": "{{R1_WAN_MPLS_BGP_AS}}",
+                    "remote-as": "{{R1_WAN_MPLS_PEER_BGP_AS}}",
                     "password": "",
                     "import-route-map": "TATA-PEER-MPLS-IN-PRI | system",
                     "export-route-map": "TATA-PEER-MPLS-OUT-PRI | system",
