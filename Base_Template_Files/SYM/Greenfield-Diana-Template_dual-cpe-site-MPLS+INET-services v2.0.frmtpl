@@ -1489,7 +1489,7 @@
                 "endpoint-name": "eas-tunnel1",
                 "device-ip": "{{cpe_secondary}}",
                 "fvrf": null,
-                "ivrf": null,
+                "ivrf": "INTERNET | system",
                 "vrf": null,
                 "interface-type": "Tunnel",
                 "interface-name": null,
