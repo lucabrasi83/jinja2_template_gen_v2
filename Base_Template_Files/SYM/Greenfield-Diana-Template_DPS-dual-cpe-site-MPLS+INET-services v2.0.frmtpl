@@ -175,7 +175,7 @@
             "tunnel-interface-ip-address": "{{R2_DPS_DMVPN_IP}}",
             "tunnel-bandwidth": null,
             "tunnel-interface-description": "[DPS DMVPN Overlay]",
-            "tunnel-fvrf": "DPS | system",
+            "tunnel-fvrf": null,
             "taskId_h": "",
             "propName_h": "",
             "oldPropName_h": "",
