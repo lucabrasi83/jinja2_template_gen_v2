@@ -5,3 +5,5 @@
 __pycache__/
 Templates_Generated/*
 Templates_Inputs/*
+test/.pytest_cache/*
+.pytest_cache/*

@@ -1,0 +1,35 @@
+---
+# Give customer full name (eg: TATA Communications)
+CUSTOMER_NAME: ZZZ-CUST
+
+# Customer 3 letters identifier (eg: TCL)
+CUSTOMER_TREEGRAM: ZZZ 
+
+# Customer Unique ID from SFDC. If multiple CUID's, enter the main entity one
+CUSTOMER_SFDC_CUID: 999999 
+
+# Enter 'yes' if this customer has sites attached to EAS gateways or 'no' if not
+EAS_REQUIRED: yes
+# Uncomment EAS related fields if customer has sites attached to EAS gateways
+#
+EAS_GATEWAY_PUBLIC_IP: 80.231.106.87
+EAS_GATEWAY_TUNNEL_INTERFACE_IP: 100.64.100.1
+EAS_PROFILE_NAME: EAS_GLOBAL
+EAS_PROFILE_PRE_SHARED_KEY: C1sc0123
+EAS_TUNNEL_NHRP_AUTH_KEY: C1sc0123
+EAS_TUNNEL_INTERFACE_ID: 100
+EAS_TUNNEL_INTERFACE_KEY: 12345678
+EAS_TUNNEL_INTERFACE_NETWORK_ID: 12345678
+EAS_TUNNEL_IP_SUBNET: 100.64.100.0/24
+
+# Enter MPLS WAN IP pool assigned for customer
+WAN_SUPER_SUBNET: 10.0.0.0/8
+
+# Enter Mgmt IP pool assigned for customer. Following types are supported 'loopback' and 'b2b'
+MGMT_IP_POOL:
+            -
+              TYPE: loopback
+              SUBNET: 11.0.0.0/27
+
+           
+...

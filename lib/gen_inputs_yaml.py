@@ -1,10 +1,10 @@
-from jinja2 import FileSystemLoader, Environment, meta
+from jinja2 import FileSystemLoader, Environment, meta, Template
 import yaml
 from jinja2.exceptions import TemplateNotFound
 import os
 import traceback
 import sys
-from _jinja_custom_filters import getiffullname, getnextip, getipfromsub, convbps2mbps
+from . import _jinja_custom_filters
 
 
 def yaml_input_gen(file):
@@ -12,17 +12,20 @@ def yaml_input_gen(file):
     # Load Base Template File
     templateloader = FileSystemLoader(searchpath="./Base_Template_Files")
     env = Environment(loader=templateloader, autoescape=False)
-    env.filters['getipfromsub'] = getipfromsub
-    env.filters['getnextip'] = getnextip
-    env.filters['getiffullname'] = getiffullname
-    env.filters['convbps2mbps'] = convbps2mbps
+    jinja_filters_func = dir(_jinja_custom_filters)
 
+    # Register custom filters into Jinja2 Environment
+    for func in jinja_filters_func:
+        if 'jinj_' in func:
+            func_ref = getattr(_jinja_custom_filters, func)
+            filter_name = func.split('_')[1]
+            env.filters[filter_name] = func_ref
     try:
         template = env.get_template(file)
     except TemplateNotFound:
         print("\033[91m", "Template File", file, "not found in Base_Template_Files directory", "\033[0m")
         traceback.print_exc()
-        sys.exit()
+        sys.exit(2)
 
     # Fetch all variables declared in template file
     template_source = env.loader.get_source(env, file)
@@ -33,7 +36,7 @@ def yaml_input_gen(file):
     template_vars = dict.fromkeys(template_vars, None)
     template_vars["template_file"] = str(file)
     if "site_name" not in template_vars:
-        template_vars["site_name"] = None
+        template_vars["SITE_NAME"] = None
 
     if '.frmtpl' in file:
         file = file.split('.frmtpl')[0]
@@ -52,23 +55,27 @@ def yaml_input_gen(file):
     except Exception:
         print('\033[91m', "Error  when trying to generate YAML file", '\033[0m')
         traceback.print_exc()
-        sys.exit()
+        sys.exit(2)
 
 
 def extract_variable(file):
     # Load Base Template File
     templateloader = FileSystemLoader(searchpath="./Base_Template_Files")
     env = Environment(loader=templateloader, autoescape=False)
-    env.filters['getipfromsub'] = getipfromsub
-    env.filters['getnextip'] = getnextip
-    env.filters['getiffullname'] = getiffullname
-    env.filters['convbps2mbps'] = convbps2mbps
+    jinja_filters_func = dir(_jinja_custom_filters)
+
+    # Register custom filters into Jinja2 Environment
+    for func in jinja_filters_func:
+        if 'jinj_' in func:
+            func_ref = getattr(_jinja_custom_filters, func)
+            filter_name = func.split('_')[1]
+            env.filters[filter_name] = func_ref
     try:
         template = env.get_template(file)
     except TemplateNotFound:
         print("\033[91m", "Template File", file, "not found in Base_Template_Files directory", "\033[0m")
         traceback.print_exc()
-        sys.exit()
+        sys.exit(2)
 
     # Fetch all variables declared in template file
     template_source = env.loader.get_source(env, file)
@@ -80,3 +87,4 @@ def extract_variable(file):
         print("\u001b[36;1m", '---------------------------------------------', "\u001b[0m")
         print('\033[93m', var, '\033[0m')
     print("\n")
+    return template

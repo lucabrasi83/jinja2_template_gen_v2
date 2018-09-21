@@ -1,0 +1,9 @@
+---
+dps_b2b_subnet: 10.91.72.252/30 # Enter DPS Subnet
+dps_b2b_vlan_id: 911 # Enter DPS Subnet
+dps_loopback_ip: 10.91.76.95 # Enter DPS Subnet
+dps_tunnel_interface_ip: 10.91.75.95 # Enter DPS Subnet
+secondary_cpe_b2b_phy_interface_name: GigabitEthernet0/1/0
+site_name: CGB-NO-LAR
+template_file: CGB/CGB_GOLD_DPS_TEMPLATE.frmtpl
+...
