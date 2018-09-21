@@ -1,0 +1,1399 @@
+{
+  "customer": {
+    "resource-pool": "{{CUSTOMER_TREEGRAM}}-PARENT-RP",
+    "as-path-acls": {
+      "as-path-acl": [
+        {
+          "expression": "^$",
+          "condition": "permit",
+          "number": 1
+        }
+      ]
+    },
+    "community-lists": {
+      "community-list": [
+        {
+          "community-list-name": "LOCAL-ROUTES",
+          "condition": "permit",
+          "extcommunity": false,
+          "value": "999:999",
+          "community-list-entry": "expanded"
+        },
+        {
+          "community-list-name": "DELETE-LOCAL-COMMUNITY",
+          "condition": "permit",
+          "extcommunity": false,
+          "value": "999:999",
+          "community-list-entry": "expanded"
+        }
+      ]
+    },
+    "bgp-peer-groups": {},
+    "object-groups": {},
+    "description": "{{ CUSTOMER_NAME }}",
+    "name": "{{CUSTOMER_SFDC_CUID}}",
+    "triple-cpe-site": {},
+    {% if EAS_REQUIRED %}
+    "ipsec": {
+      "ipsec-profiles": {
+        "ipsec-profile": [
+          {
+            "shared": true,
+            "crypto-profile": "EAS_CRYPTO_PROFILE",
+            "ipsec-profile-name": "EAS_IPSEC_PROFILE",
+            "transform-set": "EAS_IPSEC_TSET"
+          }
+        ]
+      },
+      "crypto-profiles": {
+        "crypto-profile": [
+          {
+            "crypto-type": "IKEV1",
+            "encryption": "AES128",
+            "authentication": "SHA1",
+            "allow-all": true,
+            "crypto-profile-name": "EAS_CRYPTO_PROFILE",
+            "auth-type": "pre-share",
+            "policy-number": 3,
+            "vrf": "INTERNET",
+            "group": 15,
+            "keyring": "EAS_CRYPTO_KEYRING",
+            "pre-shared-key": "{{EAS_PROFILE_PRE_SHARED_KEY}}"
+          }
+        ]
+      },
+      "transform-sets": {
+        "transform-set": [
+          {
+            "encryption": "esp-aes",
+            "authentication": "esp-sha-hmac",
+            "transform-set-name": "EAS_IPSEC_TSET",
+            "mode": "transport"
+          }
+        ]
+      }
+    },
+    "dmvpn-tunnel-profiles": {
+      "dmvpn-tunnel-profile": [
+        {
+          "mtu": 1400,
+          "tunnel-key": "{{EAS_TUNNEL_INTERFACE_KEY}}",
+          "nhrp-shortcut": true,
+          "tunnel-prefix": "{{CUSTOMER_SFDC_CUID}}_EAS_{{EAS_TUNNEL_IP_SUBNET}}",
+          "tcp-adjust-mss": 1360,
+          "nhrp-reg-no-uniq": false,
+          "nhrp-authentication-key": "{{EAS_TUNNEL_NHRP_AUTH_KEY}}",
+          "nhrp-redirect": false,
+          "nhrp-holdtime": 600,
+          "wan-public-ip": "{{EAS_GATEWAY_PUBLIC_IP}}",
+          "tunnel-id": "{{EAS_TUNNEL_INTERFACE_ID}}",
+          "name": "{{EAS_PROFILE_NAME}}_DMVPN_PROFILE",
+          "ipsec-profile": "EAS_IPSEC_PROFILE",
+          "nhrp-nw-id": "{{EAS_TUNNEL_INTERFACE_NETWORK_ID}}",
+          "no-nhrp-route-watch": false,
+          "wan-tunnel-ip": "{{EAS_GATEWAY_TUNNEL_INTERFACE_IP}}"
+        }
+      ]
+    },
+    {% endif %}
+    "route-maps": {
+      "route-map": [
+        {
+          "description": "Route-Map Outbound Customer LAN BGP Peering Primary",
+          "route-map-entries": [
+            {
+              "set-action": [
+                {
+                  "set-type": "metric",
+                  "value": "500"
+                },
+                {
+                  "set-type": "origin",
+                  "value": "igp"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 999
+            }
+          ],
+          "route-map-name": "CUSTOMER-PRI-PEER-WITH-TATA-PRI-PEER-OUT"
+        },
+        {
+          "description": "Route-Map Inbound Customer LAN BGP Peering Secondary",
+          "route-map-entries": [
+            {
+              "set-action": [
+                {
+                  "set-type": "local-preference",
+                  "value": "250"
+                },
+                {
+                  "set-type": "community",
+                  "value": "999:999"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 999
+            }
+          ],
+          "route-map-name": "CUSTOMER-PRI-PEER-WITH-TATA-SEC-PEER-IN"
+        },
+        {
+          "description": "MPLS Inbound Route-Map Primary Circuit",
+          "route-map-entries": [
+            {
+              "set-action": [
+                {
+                  "set-type": "local-preference",
+                  "value": "500"
+                },
+                {
+                  "set-type": "weight",
+                  "value": "32768"
+                },
+                {
+                  "set-type": "comm-list",
+                  "value": "DELETE-LOCAL-COMMUNITY"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 999
+            }
+          ],
+          "route-map-name": "TATA-PEER-MPLS-IN-PRI"
+        },
+        {
+          "description": "Route-Map BGP To OSPF Redistribution Primary CPE",
+          "route-map-entries": [
+            {
+              "set-action": [
+                {
+                  "set-type": "metric",
+                  "value": "100"
+                },
+                {
+                  "set-type": "tag",
+                  "value": "1000"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 10
+            }
+          ],
+          "route-map-name": "BGP-TO-OSPF-PRI"
+        },
+        {
+          "description": "Route-MAP OSPF To BGP Redistribution",
+          "route-map-entries": [
+            {
+              "match-condition": [
+                {
+                  "condition-type": "tag",
+                  "value": "1000"
+                }
+              ],
+              "action": "deny",
+              "sequence-number": 10
+            },
+            {
+              "set-action": [
+                {
+                  "set-type": "community",
+                  "value": "999:999"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 999
+            }
+          ],
+          "route-map-name": "OSPF-TO-BGP"
+        },
+        {
+          "description": "IZO Internet Inbound Route-Map Primary Circuit",
+          "route-map-entries": [
+            {
+              "set-action": [
+                {
+                  "set-type": "local-preference",
+                  "value": "500"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 10
+            }
+          ],
+          "route-map-name": "IZO-INTERNET-PEER-IN-PRI"
+        },
+        {
+          "description": "Route-Map Outbound Customer LAN BGP Peering Secondary",
+          "route-map-entries": [
+            {
+              "set-action": [
+                {
+                  "set-type": "origin",
+                  "value": "igp"
+                },
+                {
+                  "set-type": "metric",
+                  "value": "1000"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 999
+            }
+          ],
+          "route-map-name": "CUSTOMER-PRI-PEER-WITH-TATA-SEC-PEER-OUT"
+        },
+        {
+          "description": "OSPF LAN Distribute List Inbound",
+          "route-map-entries": [
+            {
+              "action": "permit",
+              "sequence-number": 999
+            },
+            {
+              "match-condition": [
+                {
+                  "condition-type": "tag",
+                  "value": "1000"
+                }
+              ],
+              "action": "deny",
+              "sequence-number": 10
+            }
+          ],
+          "route-map-name": "CUSTOMER-OSPF-IN"
+        },
+        {
+          "route-map-entries": [
+            {
+              "set-action": [
+                {
+                  "set-type": "local-preference",
+                  "value": "250"
+                },
+                {
+                  "set-type": "comm-list",
+                  "value": "DELETE-LOCAL-COMMUNITY"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 999
+            }
+          ],
+          "route-map-name": "TATA-PEER-EAS-IN-SEC",
+          "description": "EAS Inbound Route-Map Secondary Circuit"
+        },
+        {
+          "route-map-entries": [
+            {
+              "match-condition": [
+                {
+                  "condition-type": "community",
+                  "value": "LOCAL-ROUTES"
+                }
+              ],
+              "set-action": [
+                {
+                  "set-type": "comm-list",
+                  "value": "DELETE-LOCAL-COMMUNITY"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 999
+            }
+          ],
+          "route-map-name": "TATA-PEER-EAS-OUT-PRI",
+           "description": "EAS Outbound Route-Map Primary Circuit"
+        },
+        {
+          "route-map-entries": [
+            {
+              "set-action": [
+                {
+                  "set-type": "local-preference",
+                  "value": "500"
+                },
+                {
+                  "set-type": "weight",
+                  "value": "32768"
+                },
+                {
+                  "set-type": "comm-list",
+                  "value": "DELETE-LOCAL-COMMUNITY"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 999
+            }
+          ],
+          "route-map-name": "TATA-PEER-EAS-IN-PRI",
+          "description": "EAS Inbound Route-Map Primary Circuit"
+        },
+        {
+          "description": "MPLS Outbound Route-Map Primary Circuit",
+          "route-map-entries": [
+            {
+              "match-condition": [
+                {
+                  "condition-type": "community",
+                  "value": "LOCAL-ROUTES"
+                }
+              ],
+              "set-action": [
+                {
+                  "set-type": "comm-list",
+                  "value": "DELETE-LOCAL-COMMUNITY"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 999
+            }
+          ],
+          "route-map-name": "TATA-PEER-MPLS-OUT-PRI"
+        },
+        {
+          "route-map-entries": [
+            {
+              "match-condition": [
+                {
+                  "condition-type": "interface",
+                  "value": "LAN-INTERFACE"
+                }
+              ],
+              "set-action": [
+                {
+                  "set-type": "community",
+                  "value": "999:999"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 10
+            }
+          ],
+          "route-map-name": "CONNECTED-TO-BGP",
+          "description": "Connected Interface(s) To BGP Route-Map"
+        },
+        {
+          "description": "IZO Internet Inbound Route-map Secondary Circuit",
+          "route-map-entries": [
+            {
+              "set-action": [
+                {
+                  "set-type": "local-preference",
+                  "value": "250"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 10
+            }
+          ],
+          "route-map-name": "IZO-INTERNET-PEER-IN-SEC"
+        },
+        {
+          "description": "IZO Internet Outbound Route-Map Secondary Circuit",
+          "route-map-entries": [
+            {
+              "match-condition": [
+                {
+                  "condition-type": "as-path",
+                  "value": "1"
+                }
+              ],
+              "set-action": [
+                {
+                  "set-type": "as-path prepend",
+                  "value": "AS AS"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 10
+            }
+          ],
+          "route-map-name": "IZO-INTERNET-PEER-OUT-SEC"
+        },
+        {
+          "description": "Route-Map BGP To EIGRP Redistribution Primary",
+          "route-map-entries": [
+            {
+              "set-action": [
+                {
+                  "set-type": "metric",
+                  "value": "100000 1 255 1 1500"
+                },
+                {
+                  "set-type": "tag",
+                  "value": "1000"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 10
+            }
+          ],
+          "route-map-name": "BGP-TO-EIGRP-PRI"
+        },
+        {
+          "description": "IZO Internet Outbound Route-map Primary Circuit",
+          "route-map-entries": [
+            {
+              "match-condition": [
+                {
+                  "condition-type": "as-path",
+                  "value": "1"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 10
+            }
+          ],
+          "route-map-name": "IZO-INTERNET-PEER-OUT-PRI"
+        },
+        {
+          "route-map-entries": [
+            {
+              "match-condition": [
+                {
+                  "condition-type": "community",
+                  "value": "LOCAL-ROUTES"
+                }
+              ],
+              "set-action": [
+                {
+                  "set-type": "as-path prepend",
+                  "value": "AS AS"
+                },
+                {
+                  "set-type": "comm-list",
+                  "value": "DELETE-LOCAL-COMMUNITY"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 999
+            }
+          ],
+          "route-map-name": "TATA-PEER-EAS-OUT-SEC",
+          "description": "EAS Outbound Route-Map Secondary Circuit"
+        },
+        {
+          "description": "Route-Map LAN EIGRP to BGP Redistribution",
+          "route-map-entries": [
+            {
+              "set-action": [
+                {
+                  "set-type": "community",
+                  "value": "999:999"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 999
+            }
+          ],
+          "route-map-name": "EIGRP-TO-BGP"
+        },
+        {
+          "description": "Route-Map Inbound Customer LAN Primary BGP Peering",
+          "route-map-entries": [
+            {
+              "set-action": [
+                {
+                  "set-type": "local-preference",
+                  "value": "500"
+                },
+                {
+                  "set-type": "weight",
+                  "value": "32768"
+                },
+                {
+                  "set-type": "community",
+                  "value": "999:999"
+                }
+              ],
+              "action": "permit",
+              "sequence-number": 999
+            }
+          ],
+          "route-map-name": "CUSTOMER-PRI-PEER-WITH-TATA-PRI-PEER-IN"
+        },
+        {
+          "description": "Route-Map For LAN EIGRP Distribute List",
+          "route-map-entries": [
+            {
+              "action": "permit",
+              "sequence-number": 999
+            },
+            {
+              "match-condition": [
+                {
+                  "condition-type": "tag",
+                  "value": "1000"
+                }
+              ],
+              "action": "deny",
+              "sequence-number": 10
+            }
+          ],
+          "route-map-name": "CUSTOMER-EIGRP-IN"
+        }
+      ]
+    },
+    "qos-service": {
+      "class-maps": {
+        "class-map": [
+          {
+            "dps": false,
+            "dscp": [
+              "ef"
+            ],
+            "match-type": "match-any",
+            "name": "COS1-OUT"
+          },
+          {
+            "dps": false,
+            "dscp": [
+              "af31"
+            ],
+            "match-type": "match-any",
+            "name": "COS3-OUT"
+          },
+          {
+            "dps": false,
+            "dscp": [
+              "af11"
+            ],
+            "match-type": "match-any",
+            "name": "COS5-OUT"
+          },
+          {
+            "dps": false,
+            "dscp": [
+              "default"
+            ],
+            "match-type": "match-any",
+            "name": "COS6-OUT"
+          },
+          {
+            "dps": false,
+            "match-type": "match-any",
+            "name": "MANAGEMENT",
+            "access-group": [
+              "BGP-TRAFFIC",
+              "TATA-MANAGEMENT"
+            ]
+          },
+          {
+            "dps": false,
+            "dscp": [
+              "af21"
+            ],
+            "match-type": "match-any",
+            "name": "COS4-OUT"
+          },
+          {
+            "dps": false,
+            "dscp": [
+              "af41"
+            ],
+            "match-type": "match-any",
+            "name": "COS2-OUT"
+          }
+        ]
+      },
+      "hierarchical-policy": {},
+      "policy-class-map-update": {},
+      "policies": {
+        "policy": [
+          {
+            "classes": {
+              "class-name": [
+                {
+                  "packet-handling": {
+                    "remarking": {
+                      "dscp-tunnel": false,
+                      "mark-dscp": "af41"
+                    },
+                    "bandwidth": {
+                      "rate-percentage": 1
+                    }
+                  },
+                  "name": "MANAGEMENT",
+                  "class-sequence": 1
+                },
+                {
+                  "packet-handling": {
+                    "priority": {
+                      "priority-level": 1
+                    }
+                  },
+                  "name": "COS1-OUT",
+                  "class-sequence": 2
+                },
+                {
+                  "packet-handling": {
+                    "bandwidth": {
+                      "rate-percentage": 1
+                    }
+                  },
+                  "queue-limit": {
+                    "queue-limit": 1024,
+                    "packets": true
+                  },
+                  "name": "COS5-OUT",
+                  "class-sequence": 6
+                },
+                {
+                  "packet-handling": {
+                    "priority": {
+                      "priority-level": 2
+                    }
+                  },
+                  "name": "COS2-OUT",
+                  "class-sequence": 3
+                },
+                {
+                  "packet-handling": {
+                    "bandwidth": {
+                      "rate-percentage": 1
+                    }
+                  },
+                  "queue-limit": {
+                    "queue-limit": 1024,
+                    "packets": true
+                  },
+                  "name": "COS3-OUT",
+                  "class-sequence": 4
+                },
+                {
+                  "packet-handling": {
+                    "bandwidth": {
+                      "rate-percentage": 1
+                    }
+                  },
+                  "queue-limit": {
+                    "queue-limit": 1024,
+                    "packets": true
+                  },
+                  "name": "COS4-OUT",
+                  "class-sequence": 5
+                },
+                {
+                  "packet-handling": {
+                    "bandwidth": {
+                      "rate-percentage": 1
+                    }
+                  },
+                  "name": "COS6-OUT",
+                  "class-sequence": 7
+                }
+              ]
+            },
+            "description": "GVPN Child QoS Policy for IOS-XE",
+            "name": "CHILD-GVPN-OUT-IOSXE"
+          },
+           {
+            "classes": {
+              "class-name": [
+                {
+                  "packet-handling": {
+                    "remarking": {
+                      "dscp-tunnel": false,
+                      "mark-dscp": "af41"
+                    },
+                    "bandwidth": {
+                      "rate-percentage": 1
+                    }
+                  },
+                  "name": "MANAGEMENT",
+                  "class-sequence": 1
+                },
+                {
+                  "packet-handling": {
+          "police": {
+            "police-cir-percentage": 1,
+            "actions": {
+              "exceed-handling": {
+                "drop-packet": "true"
+              }
+            }
+          },
+          "priority": {
+            "percentage": 1
+          }
+                  },
+                  "name": "COS1-OUT",
+                  "class-sequence": 2
+                },
+                {
+                  "packet-handling": {
+                    "bandwidth": {
+                      "rate-percentage": 1
+                    }
+                  },
+                  "queue-limit": {
+                    "queue-limit": 1024,
+                    "packets": true
+                  },
+                  "name": "COS5-OUT",
+                  "class-sequence": 6
+                },
+                {
+                  "packet-handling": {
+                    "priority": {
+                      "priority-level": 2
+                    }
+                  },
+                  "name": "COS2-OUT",
+                  "class-sequence": 3
+                },
+                {
+                  "packet-handling": {
+                    "bandwidth": {
+                      "rate-percentage": 1
+                    }
+                  },
+                  "queue-limit": {
+                    "queue-limit": 1024,
+                    "packets": true
+                  },
+                  "name": "COS3-OUT",
+                  "class-sequence": 4
+                },
+                {
+                  "packet-handling": {
+                    "bandwidth": {
+                      "rate-percentage": 1
+                    }
+                  },
+                  "queue-limit": {
+                    "queue-limit": 1024,
+                    "packets": true
+                  },
+                  "name": "COS4-OUT",
+                  "class-sequence": 5
+                },
+                {
+                  "packet-handling": {
+                    "bandwidth": {
+                      "rate-percentage": 1
+                    }
+                  },
+                  "name": "COS6-OUT",
+                  "class-sequence": 7
+                }
+              ]
+            },
+            "description": "GVPN Child QoS Policy for IOS",
+            "name": "CHILD-GVPN-OUT-IOS"
+          }
+        ]
+      },
+      "policy-update": {}
+    },
+    "vrfs": {
+      "vrf": [
+        {
+          "vrf-definition-mode": false,
+          "vrf-name": "INTERNET",
+          "rd": "1:2"
+        }
+      ]
+    },
+    "access-lists": {
+      "access-list": [
+      {
+        "dps": false,
+        "name": "INTERNET-WAN-IN",
+        "sequence-number": "13",
+        "access-list-rules": [
+          {
+            "source-object": "{{WAN_SUPER_SUBNET}}",
+            "protocol": "icmp",
+            "source-condition": "cidr",
+            "acl-sequence-num": 240,
+            "name": "allow_wan_subnet",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14"
+           
+          },
+         
+          {
+            "source-object": "66.198.145.8",
+            "protocol": "tcp",
+            "source-condition": "host",
+            "acl-sequence-num": 190,
+            "name": "permit tcp host 66.198.145.8 any eq 22",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "22",
+            "dest-port-operator": "eq"
+          },
+         
+          {
+            "source-object": "14.141.150.124",
+            "protocol": "tcp",
+            "source-condition": "host",
+            "acl-sequence-num": 210,
+            "name": "permit tcp host 14.141.150.124 any eq 22",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "22",
+            "dest-port-operator": "eq"
+          },
+          {
+            "source-object": "14.141.150.125",
+            "protocol": "tcp",
+            "source-condition": "host",
+            "acl-sequence-num": 200,
+            "name": "permit tcp host 14.141.150.125 any eq 22",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "22",
+            "dest-port-operator": "eq"
+          },
+         
+          {
+            "source-object": "14.142.238.161",
+            "protocol": "tcp",
+            "source-condition": "host",
+            "acl-sequence-num": 220,
+            "name": "permit tcp host 14.142.238.161 any eq 22",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "22",
+            "dest-port-operator": "eq"
+          },
+          
+          {
+            "source-object": "64.86.228.42",
+            "protocol": "tcp",
+            "source-condition": "host",
+            "acl-sequence-num": 230,
+            "name": "permit tcp host 64.86.228.42 any eq 22",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "22",
+            "dest-port-operator": "eq"
+          },
+          {
+            "protocol": "ip",
+            "source-condition": "any",
+            "acl-sequence-num": 999,
+            "name": "deny  ip any any",
+            "destination-condition": "any",
+            "action": "deny",
+            "sequence-number": "14"
+          },
+          {
+            "source-object": "202.54.29.29",
+            "protocol": "tcp",
+            "source-condition": "host",
+            "acl-sequence-num": 170,
+            "name": "permit tcp host 202.54.29.29 any eq 22",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "22",
+            "dest-port-operator": "eq"
+          },
+          
+          {
+            "source-object": "66.198.164.18",
+            "protocol": "tcp",
+            "source-condition": "host",
+            "acl-sequence-num": 180,
+            "name": "permit tcp host 66.198.164.18 any eq 22",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "22",
+            "dest-port-operator": "eq"
+          },
+          {
+            "protocol": "esp",
+            "source-condition": "any",
+            "acl-sequence-num": 30,
+            "name": "permit esp any any",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14"
+          },
+          {
+            "protocol": "udp",
+            "source-condition": "any",
+            "acl-sequence-num": 90,
+            "name": "permit udp any any eq 16384",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "16384",
+            "dest-port-operator": "eq"
+          },
+          {
+            "source-port": "500",
+            "protocol": "udp",
+            "source-condition": "any",
+            "acl-sequence-num": 40,
+            "name": "permit udp any eq isakmp any",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "source-port-operator": "eq"
+          },
+          {
+            "protocol": "udp",
+            "source-condition": "any",
+            "acl-sequence-num": 50,
+            "name": "permit udp any any eq isakmp",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "500",
+            "dest-port-operator": "eq"
+          },
+           {
+            "source-port": "4500",
+            "protocol": "udp",
+            "source-condition": "any",
+            "acl-sequence-num": 10,
+            "name": "permit udp any any eq non500-isakmp",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "source-port-operator": "eq"
+          },
+          {
+            "protocol": "udp",
+            "source-condition": "any",
+            "acl-sequence-num": 20,
+            "name": "permit udp any eq non500-isakmp any",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "4500",
+            "dest-port-operator": "eq"
+          },
+          {
+            "protocol": "gre",
+            "source-condition": "any",
+            "acl-sequence-num": 80,
+            "name": "permit gre any any",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14"
+          },
+          {
+            "source-port": "179",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "acl-sequence-num": 70,
+            "name": "permit tcp any eq bgp any",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "source-port-operator": "eq"
+          },
+          {
+            "source-port": "179",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "acl-sequence-num": 60,
+            "name": "permit tcp any any eq bgp",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "source-port-operator": "eq"
+          },
+          {
+            "protocol": "udp",
+            "source-condition": "any",
+            "acl-sequence-num": 100,
+            "name": "permit udp any any eq 1967",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "1967",
+            "dest-port-operator": "eq"
+          },
+          {
+            "protocol": "tcp",
+            "source-condition": "any",
+            "acl-sequence-num": 130,
+            "name": "permit tcp any any eq 1167",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "1167",
+            "dest-port-operator": "eq"
+          },
+          {
+            "protocol": "tcp",
+            "source-condition": "any",
+            "acl-sequence-num": 110,
+            "name": "permit tcp any any eq 1967",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "1967",
+            "dest-port-operator": "eq"
+          },
+          {
+            "source-object": "195.219.99.0/24",
+            "protocol": "ip",
+            "source-condition": "cidr",
+            "acl-sequence-num": 140,
+            "name": "permit ip 195.219.99.0 0.0.0.255 any",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14"
+          },
+          {
+            "protocol": "udp",
+            "source-condition": "any",
+            "acl-sequence-num": 120,
+            "name": "permit udp any any eq 1167",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "1167",
+            "dest-port-operator": "eq"
+          },
+          {
+            "source-object": "202.54.29.25",
+            "protocol": "tcp",
+            "source-condition": "host",
+            "acl-sequence-num": 130,
+            "name": "condi13",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23",
+            "dest-port-operator": "eq"
+          },
+          {
+            "source-object": "202.54.29.25",
+            "protocol": "tcp",
+            "source-condition": "host",
+            "acl-sequence-num": 140,
+            "name": "condi14",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "22",
+            "dest-port-operator": "eq"
+          }
+        ],
+        "access-list-entry": "extended"
+      },
+      {
+        "dps": false,
+        "name": "BGP-TRAFFIC",
+        "sequence-number": "13",
+        "access-list-rules": [
+          {
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "permit tcp any eq 179 any",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "179",
+            "dest-port-operator": "eq"
+          },
+          {
+            "source-port": "179",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "permit tcp any any eq 179",
+            "destination-condition": "any",
+            "action": "permit",
+            "sequence-number": "14",
+            "source-port-operator": "eq"
+          }
+        ],
+        "access-list-entry": "extended"
+      },
+      {
+        "dps": false,
+        "name": "TATA-MANAGEMENT",
+        "sequence-number": "13",
+        "access-list-rules": [
+          {
+            "destination-object": "14.142.238.161",
+            "protocol": "ip",
+            "source-condition": "any",
+            "name": "ANUTA_PUNE_INTERNET_AGENT_02",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14"
+          },
+          {
+            "destination-object": "195.219.99.0/24",
+            "protocol": "ip",
+            "source-condition": "any",
+            "name": "UK_STRATFORD_MGMT_PLATFORM",
+            "destination-condition": "cidr",
+            "action": "permit",
+            "sequence-number": "14"
+          },
+          {
+            "destination-object": "121.244.180.0/24",
+            "protocol": "ip",
+            "source-condition": "any",
+            "name": "ANUTA_PUNE_MPLS_AGENTS",
+            "destination-condition": "cidr",
+            "action": "permit",
+            "sequence-number": "14"
+          },
+          {
+            "destination-object": "115.110.222.128/27",
+            "protocol": "ip",
+            "source-condition": "any",
+            "name": "ANUTA_US_MPLS_AGENT",
+            "destination-condition": "cidr",
+            "action": "permit",
+            "sequence-number": "14"
+          },
+          {
+            "destination-object": "202.54.29.25",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_1",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+          {
+            "destination-object": "202.54.29.110",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_2",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+          
+          
+          {
+            "destination-object": "14.141.150.124",
+            "protocol": "ip",
+            "source-condition": "any",
+            "name": "ANUTA_PUNE_INTERNET_AGENT_01",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14"
+          },
+          {
+            "destination-object": "115.114.146.71",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_3",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+         
+          {
+            "destination-object": "115.114.146.70",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_4",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+          
+          {
+            "destination-object": "115.114.146.69",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_5",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+          {
+            "destination-object": "10.70.0.201",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_6",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+          {
+            "destination-object": "10.70.0.202",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_7",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+          
+          {
+            "destination-object": "115.114.151.107",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_8",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+         
+          {
+            "destination-object": "115.114.151.114",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_9",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+         
+          {
+            "destination-object": "202.54.29.29",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_11",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+         
+          {
+            "destination-object": "172.31.6.73",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_12",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+          
+          {
+            "destination-object": "121.240.5.113",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_13",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+        
+         
+          {
+            "destination-object": "115.114.170.79",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_14",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+          {
+            "destination-object": "121.240.118.90",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_15",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+          {
+            "destination-object": "121.240.6.13",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_16",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "22",
+            "dest-port-operator": "eq"
+          },
+          
+          {
+            "destination-object": "66.198.164.18",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_18",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23",
+            "dest-port-operator": "eq"
+          },
+          
+         
+        
+          {
+            "destination-object": "66.198.145.8",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_19",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23",
+            "dest-port-operator": "eq"
+          },
+          {
+            "destination-object": "14.141.150.125",
+            "protocol": "tcp",
+            "source-condition": "any",
+            "name": "CAT2_GPD_MGMT_20",
+            "destination-condition": "host",
+            "action": "permit",
+            "sequence-number": "14",
+            "port-number": "23 22",
+            "dest-port-operator": "eq"
+          },
+         
+          {
+            "destination-object": "121.244.196.0/24",
+            "protocol": "ip",
+            "source-condition": "any",
+            "name": "UK_STRATFORD_MGMT_PLATFORM_2",
+            "destination-condition": "cidr",
+            "action": "permit",
+            "sequence-number": "14"
+          }
+        ],
+        "access-list-entry": "extended"
+      }
+    ]
+    }
+  }
+}

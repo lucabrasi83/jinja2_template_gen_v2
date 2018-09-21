@@ -1,0 +1,19 @@
+---
+# Provide CPE Name
+DEVICE_NAME: POD7-RTR2
+
+# Provide Credential Set Name
+CREDENTIAL_SET: TRAINING_CREDENTIALS
+
+# Provide OS Type (eg: IOS or IOSXE)
+OS_TYPE: IOSXE
+
+# Provide Device Mgmt IP Address (eg: Private Loopback or public WAN IP)
+MGMT_IP_ADDRESS: 10.1.1.23
+
+# Provide Site Name
+SITE_NAME: SITE-TEST
+
+# Provide Parent Resource Pool
+PARENT_RESOURCE_POOL: ZZZ-PARENT-RP
+...

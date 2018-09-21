@@ -1,0 +1,694 @@
+{
+    "schemaPath": "/controller:services/cpedeployment:managed-cpe-services/customer/single-cpe-site/single-cpe-site-services",
+    "root0": {
+        "childForms": {
+            "single-cpe-site-services0": {
+                "nodeType": "single-cpe-site-services",
+                "site-name": "{{SITE_NAME}}",
+                "bgp-as": {{BGP_AS}},
+                "zero-touch-prov": false,
+                "description": "",
+                "resource-pool": "{{SITE_NAME}}",
+                "taskId_h": "",
+                "propName_h": "",
+                "oldPropName_h": "",
+                "allowedCascadeOwner": false,
+                "allowedCascadeSharedWith": false,
+                "allowedOwners": "system",
+                "allowedToShareWith": [
+                    "all"
+                ],
+                "childForms": {
+                    "cpe0": {
+                        "nodeType": "cpe",
+                        "name": "cpe",
+                        "device-ip": "{{CPE_NAME}}",
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                            "ip-sla0": {
+                                "nodeType": "ip-sla",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "sla0": {
+                                        "nodeType": "sla",
+                                        "entry-number": 9101,
+                                        "vrf-name": "INTERNET",
+                                        "operation-type": "udp-jitter",
+                                        "http-request-type": null,
+                                        "http-url": "",
+                                        "http-raw-request": "",
+                                        "destination": "{{IP_SLA_HUB_PUBLIC_IP}}",
+                                        "source": "source-ip",
+                                        "source-interface-name": "",
+                                        "source-interface-ip": "{{WAN_INTERFACE_IP}}",
+                                        "data-size": 64,
+                                        "frequency": 300,
+                                        "timeout": null,
+                                        "threshold": null,
+                                        "track-number": null,
+                                        "response-data-size": 64,
+                                        "destination-port": 16384,
+                                        "source-port": null,
+                                        "interval": null,
+                                        "tos": null,
+                                        "tag": "IZO_{{CPE_NAME}}:IZO_{{IP_SLA_HUB_CPE_NAME}}:udpdelay",
+                                        "history-interval": 3600,
+                                        "buckets-size": 24,
+                                        "num-packets": null,
+                                        "track-delay-down-time": null,
+                                        "track-delay-up-time": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    }
+                                }
+                            },
+                            "ospfs1": {
+                                "nodeType": "ospfs",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "router-ospf0": {
+                                        "nodeType": "router-ospf",
+                                        "process-id": 1,
+                                        "vrf-name": null,
+                                        "router-id": "{{MGMT_LOOPBACK_IP}}",
+                                        "reference-bandwidth": 1000,
+                                        "snmp": false,
+                                        "context": "",
+                                        "community": "",
+                                        "access": null,
+                                        "global-acl-name": null,
+                                        "site-acl-name": "",
+                                        "maximum-paths": null,
+                                        "default-information": false,
+                                        "default-inf-always": false,
+                                        "default-inf-metric": null,
+                                        "default-inf-metric-type": null,
+                                        "default-inf-route-map": null,
+                                        "distribute-list": true,
+                                        "dis-list-route-map": "CUSTOMER-OSPF-IN",
+                                        "dis-list-route-update": "in",
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ],
+                                        "childForms": {
+                                            "redistribute0": {
+                                                "nodeType": "redistribute",
+                                                "redistribute-ospf-on-bgp": true,
+                                                "ospf-internal": true,
+                                                "ospf-external1": true,
+                                                "ospf-external2": true,
+                                                "route-map": "OSPF-TO-BGP",
+                                                "taskId_h": "",
+                                                "propName_h": "",
+                                                "oldPropName_h": "",
+                                                "allowedOwners": "system",
+                                                "allowedToShareWith": [
+                                                    "all"
+                                                ],
+                                                "childForms": {
+                                                    "redistribute-on-ospf0": {
+                                                        "nodeType": "redistribute-on-ospf",
+                                                        "protocol": "bgp",
+                                                        "process-id": null,
+                                                        "route-map": "BGP-TO-OSPF-PRI",
+                                                        "metric": null,
+                                                        "metric-type": null,
+                                                        "tag": null,
+                                                        "taskId_h": "",
+                                                        "propName_h": "",
+                                                        "oldPropName_h": "",
+                                                        "allowedOwners": "system",
+                                                        "allowedToShareWith": [
+                                                            "all"
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "loopback2": {
+                                "nodeType": "loopback",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "loopback0": {
+                                        "nodeType": "loopback",
+                                        "loopback-interface-id": 0,
+                                        "cidr": "{{MGMT_LOOPBACK_IPAM_POOL}}_{{MGMT_LOOPBACK_IP}}/32",
+                                        "interface-name": "",
+                                        "ip": "{{MGMT_LOOPBACK_IP}}",
+                                        "vrf": null,
+                                        "description": "[LPK LOG:TATA MANAGEMENT]",
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    }
+                                }
+                            },
+                            "crypto-isakmp-peers3": {
+                                "nodeType": "crypto-isakmp-peers",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "peers0": {
+                                        "nodeType": "peers",
+                                        "peer-address": "{{EAS_PRIMARY_GATEWAY_PUBLIC_IP}}",
+                                        "vrf": "INTERNET",
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ],
+                                        "childForms": {
+                                            "set-attributes0": {
+                                                "nodeType": "set-attributes",
+                                                "allowedOwners": "system",
+                                                "allowedToShareWith": [
+                                                    "all"
+                                                ],
+                                                "childForms": {
+                                                    "attribute0": {
+                                                        "nodeType": "attribute",
+                                                        "name": "password",
+                                                        "attribute-type": "password",
+                                                        "password": "{{EAS_CRYPTO_ISAKMP_KEY}}",
+                                                        "endpoint-type": null,
+                                                        "fqdn": "",
+                                                        "ipv4-address": "",
+                                                        "user-fqdn": "",
+                                                        "taskId_h": "",
+                                                        "propName_h": "",
+                                                        "oldPropName_h": "",
+                                                        "allowedOwners": "system",
+                                                        "allowedToShareWith": [
+                                                            "all"
+                                                        ]
+                                                    },
+                                                    "attribute1": {
+                                                        "nodeType": "attribute",
+                                                        "name": "fqdn",
+                                                        "attribute-type": "client-endpoint",
+                                                        "password": "",
+                                                        "endpoint-type": "fqdn",
+                                                        "fqdn": "{{CPE_NAME | lower}}.{{CUSTOMER_TRIGRAM | lower}}.com",
+                                                        "ipv4-address": "",
+                                                        "user-fqdn": "",
+                                                        "taskId_h": "",
+                                                        "propName_h": "",
+                                                        "oldPropName_h": "",
+                                                        "allowedOwners": "system",
+                                                        "allowedToShareWith": [
+                                                            "all"
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "peers1": {
+                                        "nodeType": "peers",
+                                        "peer-address": "{{EAS_SECONDARY_GATEWAY_PUBLIC_IP}}",
+                                        "vrf": "INTERNET",
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ],
+                                        "childForms": {
+                                            "set-attributes0": {
+                                                "nodeType": "set-attributes",
+                                                "allowedOwners": "system",
+                                                "allowedToShareWith": [
+                                                    "all"
+                                                ],
+                                                "childForms": {
+                                                    "attribute0": {
+                                                        "nodeType": "attribute",
+                                                        "name": "password",
+                                                        "attribute-type": "password",
+                                                        "password": "{{EAS_CRYPTO_ISAKMP_KEY}}",
+                                                        "endpoint-type": null,
+                                                        "fqdn": "",
+                                                        "ipv4-address": "",
+                                                        "user-fqdn": "",
+                                                        "taskId_h": "",
+                                                        "propName_h": "",
+                                                        "oldPropName_h": "",
+                                                        "allowedOwners": "system",
+                                                        "allowedToShareWith": [
+                                                            "all"
+                                                        ]
+                                                    },
+                                                    "attribute1": {
+                                                        "nodeType": "attribute",
+                                                        "name": "fqdn",
+                                                        "attribute-type": "client-endpoint",
+                                                        "password": "",
+                                                        "endpoint-type": "fqdn",
+                                                        "fqdn": "{{CPE_NAME | lower}}.{{CUSTOMER_TRIGRAM | lower}}.com",
+                                                        "ipv4-address": "",
+                                                        "user-fqdn": "",
+                                                        "taskId_h": "",
+                                                        "propName_h": "",
+                                                        "oldPropName_h": "",
+                                                        "allowedOwners": "system",
+                                                        "allowedToShareWith": [
+                                                            "all"
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "vrfs4": {
+                                "nodeType": "vrfs",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "vrf0": {
+                                        "nodeType": "vrf",
+                                        "name": "GLOBAL",
+                                        "vrf-name": null,
+                                        "bgp-settings": true,
+                                        "bgp-router-id": "{{MGMT_LOOPBACK_IP}}",
+                                        "bgp-address-family": "ipv4",
+                                        "default-information-originate": false,
+                                        "bgp-distance": false,
+                                        "bgp-distance-external": null,
+                                        "bgp-distance-internal": null,
+                                        "bgp-distance-local": null,
+                                        "bgp-redis-internal": false,
+                                        "bgp-keepalive-timer": null,
+                                        "bgp-holdtime-timer": null,
+                                        "bgp-community-new": true,
+                                        "peer-groups": false,
+                                        "peer-group": [],
+                                        "redistribute-connected": true,
+                                        "redistribute-connected-route-policy": "CONNECTED-TO-BGP | system",
+                                        "redistribute-static": false,
+                                        "redistribute-static-route-policy": null,
+                                        "aggregate-summary-networks": false,
+                                        "summary-networks": "",
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ],
+                                        "childForms": {
+                                            "interface0": {
+                                                "nodeType": "interface",
+                                                "sequence-number": 101,
+                                                "entry-sequence-number": "10 | system",
+                                                "interface-name": "{{LAN_PHY_INTERFACE_NAME | getiffullname(LAN_VLAN_ID)}} Loopback0",
+                                                "taskId_h": "",
+                                                "propName_h": "",
+                                                "oldPropName_h": "",
+                                                "allowedOwners": "system",
+                                                "allowedToShareWith": [
+                                                    "all"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "wan1": {
+                        "nodeType": "wan",
+                        "name": "wan",
+                        "wan-connectivity": "MPLS",
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ]
+                    },
+                    "cpe-wan2": {
+                        "nodeType": "cpe-wan",
+                        "interconnect-name": "cpe-wan",
+                        "hierarchical-outbound-policy": true,
+                        "outbound-policy": null,
+                        "policy-name": "PARENT-GVPN-OUT",
+                        "shape-average": {{WAN_CIRCUIT_BANDWIDTH_MBPS | convbps2mbps}},
+                        "bits-sustained": null,
+                        "bits-excess": null,
+                          {% if CPE_OS_TYPE == "IOS" %}
+                        "child-qos-policy": "CHILD-GVPN-OUT-IOS | system",
+                        {% elif CPE_OS_TYPE == "IOSXE" %}
+                         "child-qos-policy": "CHILD-GVPN-OUT-IOSXE | system",
+                         {% endif %}
+                        "auto-negotiation": false,
+                        "speed": null,
+                        "duplex": null,
+                        "load-interval": false,
+                        "load-interval-delay": null,
+                        "hold-queue-in": false,
+                        "in-queue-length": null,
+                        "hold-queue-out": false,
+                        "out-queue-length": null,
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                            "end-points0": {
+                                "nodeType": "end-points",
+                                "endpoint-name": "WAN_INTERFACE",
+                                "device-ip": "{{CPE_NAME}}",
+                                "fvrf": null,
+                                "ivrf": null,
+                                "vrf": "INTERNET",
+                                "interface-type": "Physical",
+                                "interface-name": "{{WAN_INTERFACE_NAME}}",
+                                "vlan-id": null,
+                                "interface-description": "[{{WAN_INTERFACE_DESCRIPTION}}]",
+                                "mace-enable": false,
+                                "inbound-acl": false,
+                                "global-inbound-acl": null,
+                                "site-inbound-acl": "",
+                                "outbound-acl": false,
+                                "global-outbound-acl": null,
+                                "site-outbound-acl": "",
+                                "nat-inside": false,
+                                "nat-outside": false,
+                                "wan-interface-bandwidth": {{WAN_CIRCUIT_BANDWIDTH_MBPS | convmbps2kbps}},
+                                "delay": null,
+                                "pbr-policy": null,
+                                "bfd": false,
+                                "bfd-interval": null,
+                                "bfd-min-rx": null,
+                                "bfd-multiplier": null,
+                                "endpoint-level-qos": false,
+                                "inbound-qos-policy": null,
+                                "hierarchical-outbound-qos": false,
+                                "hierarchical-qos-policy-name": "",
+                                "child-qos-policy-name": null,
+                                "shape-average": null,
+                                "bits-sustained": null,
+                                "bits-excess": null,
+                                "dmvpn-profile": null,
+                                "p2p": false,
+                                "tunnel-interface-ip-address": "",
+                                "tunnel-interface-mask": "",
+                                "tunnel-interface-destination": "",
+                                "tunnel-interface-id": null,
+                                "tunnel-source": null,
+                                "tunnel-bandwidth": null,
+                                "tunnel-mss": null,
+                                "tunnel-mtu": null,
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "end-points1": {
+                                "nodeType": "end-points",
+                                "endpoint-name": "EAS_TUNNEL_INTERFACE",
+                                "device-ip": "{{CPE_NAME}}",
+                                "fvrf": "INTERNET",
+                                "ivrf": null,
+                                "vrf": null,
+                                "interface-type": "Tunnel",
+                                "interface-name": null,
+                                "vlan-id": null,
+                                "interface-description": "[{{EAS_TUNNEL_INTERFACE_DESCRIPTION}}]",
+                                "mace-enable": false,
+                                "inbound-acl": false,
+                                "global-inbound-acl": null,
+                                "site-inbound-acl": "",
+                                "outbound-acl": false,
+                                "global-outbound-acl": null,
+                                "site-outbound-acl": "",
+                                "nat-inside": false,
+                                "nat-outside": false,
+                                "wan-interface-bandwidth": null,
+                                "delay": null,
+                                "pbr-policy": null,
+                                "bfd": false,
+                                "bfd-interval": null,
+                                "bfd-min-rx": null,
+                                "bfd-multiplier": null,
+                                "endpoint-level-qos": false,
+                                "inbound-qos-policy": null,
+                                "hierarchical-outbound-qos": false,
+                                "hierarchical-qos-policy-name": "",
+                                "child-qos-policy-name": null,
+                                "shape-average": null,
+                                "bits-sustained": null,
+                                "bits-excess": null,
+                                "dmvpn-profile": "EAS_GLOBAL_DMVPN_PROFILE",
+                                "p2p": false,
+                                "tunnel-interface-ip-address": "{{EAS_TUNNEL_INTERFACE_IP}}",
+                                "tunnel-interface-mask": "",
+                                "tunnel-interface-destination": "",
+                                "tunnel-interface-id": 103,
+                                "tunnel-source": "{{WAN_INTERFACE_NAME}}",
+                                "tunnel-bandwidth": {{WAN_CIRCUIT_BANDWIDTH_MBPS | convmbps2kbps}},
+                                "tunnel-mss": null,
+                                "tunnel-mtu": null,
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "bgp-peers0": {
+                                        "nodeType": "bgp-peers",
+                                        "BGP-peer-name": "PRIMARY_EAS_EBGP_PEER",
+                                        "peer-ip": "{{PRIMARY_EAS_EBGP_PEER_IP}}",
+                                        "peer-description": "",
+                                        "remote-as": "{{PRIMARY_EAS_EBGP_PEER_AS}}",
+                                        "password": "",
+                                        "import-route-map": "TATA-PEER-EAS-IN-PRI | system",
+                                        "export-route-map": "TATA-PEER-EAS-OUT-PRI | system",
+                                        "peer-group": null,
+                                        "next-hop-self": false,
+                                        "soft-reconfiguration": false,
+                                        "default-originate": false,
+                                        "ebgp-multihop": null,
+                                        "update-source": "",
+                                        "default-originate-route-map": null,
+                                        "send-community": true,
+                                        "advertisement-interval": false,
+                                        "time-in-sec": 5,
+                                        "timers": true,
+                                        "keepalive-interval": 10,
+                                        "holdtime": 30,
+                                        "bfd-fall-over": false,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "bgp-peers1": {
+                                        "nodeType": "bgp-peers",
+                                        "BGP-peer-name": "SECONDARY_EAS_EBGP_PEER",
+                                        "peer-ip": "{{SECONDARY_EAS_EBGP_PEER_IP}}",
+                                        "peer-description": "",
+                                        "remote-as": "{{SECONDARY_EAS_EBGP_PEER_AS}}",
+                                        "password": "",
+                                        "import-route-map": "TATA-PEER-EAS-IN-SEC | system",
+                                        "export-route-map": "TATA-PEER-EAS-OUT-SEC | system",
+                                        "peer-group": null,
+                                        "next-hop-self": false,
+                                        "soft-reconfiguration": false,
+                                        "default-originate": false,
+                                        "ebgp-multihop": null,
+                                        "update-source": "",
+                                        "default-originate-route-map": null,
+                                        "send-community": true,
+                                        "advertisement-interval": false,
+                                        "time-in-sec": 5,
+                                        "timers": true,
+                                        "keepalive-interval": 10,
+                                        "holdtime": 30,
+                                        "bfd-fall-over": false,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "lan3": {
+                        "nodeType": "lan",
+                        "name": "lan",
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ]
+                    },
+                    "cpe-lan4": {
+                        "nodeType": "cpe-lan",
+                        "interconnect-name": "cpe-lan",
+                        "bits-sustained": null,
+                        "bits-excess": null,
+                        "load-interval-delay": null,
+                        "in-queue-length": null,
+                        "out-queue-length": null,
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                            "lan-profile0": {
+                                "nodeType": "lan-profile",
+                                "profile-name": "DEFAULT_LAN_PROFILE",
+                                "cidr": "{{LAN_SUBNET}}",
+                                "inbound-policy": null,
+                                "outbound-lan-policy": null,
+                                "hierarchical-inbound-policy": false,
+                                "hierarchical-policy": null,
+                                "hierarchical-lan-outbound-policy": false,
+                                "hierarchical-egress-policy": null,
+                                "shape-average-rate": null,
+                                "police-cir-rate": null,
+                                "auto-negotiation": false,
+                                "speed": null,
+                                "duplex": null,
+                                "load-interval": true,
+                                "load-interval-delay": 30,
+                                "hold-queue-in": false,
+                                "in-queue-length": null,
+                                "hold-queue-out": false,
+                                "out-queue-length": null,
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "end-points1": {
+                                "nodeType": "end-points",
+                                "profile-name": "DEFAULT_LAN_PROFILE",
+                                "endpoint-name": "LAN_INTERFACE",
+                                "device-ip": "{{CPE_NAME}}",
+                                "vrf": null,
+                                "interface-type": "Sub-Interface",
+                                "interface-name": "{{LAN_PHY_INTERFACE_NAME}}",
+                                "vlan-id": {{LAN_VLAN_ID}},
+                                "interface-ip": "{{LAN_INTERFACE_IP}}",
+                                "interface-description": "[{{LAN_INTERFACE_DESCRIPTION}}]",
+                                "pbr-policy": null,
+                                "mace-enable": false,
+                                "dps": false,
+                                "tcp-mss": null,
+                                "bandwidth": null,
+                                "ospf": true,
+                                "priority": 255,
+                                "cost": 100,
+                                "fast-hello": false,
+                                "hello-multiplier": null,
+                                "hello-interval": null,
+                                "dead-interval": null,
+                                "ospf-id": 1,
+                                "area": "0",
+                                "inbound-acl": false,
+                                "global-inbound-acl": null,
+                                "site-inbound-acl": "",
+                                "outbound-acl": false,
+                                "global-outbound-acl": null,
+                                "site-outbound-acl": "",
+                                "nat-inside": false,
+                                "nat-outside": false,
+                                "nbar-discovery": null,
+                                "delay": null,
+                                "bfd": false,
+                                "bfd-interval": null,
+                                "bfd-min-rx": null,
+                                "bfd-multiplier": null,
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,1745 @@
+{
+    "schemaPath": "/controller:services/tclday0config:day1services/day1service",
+    "root0": {
+        "childForms": {
+            "day1service0": {
+                "nodeType": "day1service",
+                "name": "{{CPE_NAME}}_MGMT",
+                "device-ip": "{{CPE_NAME}}",
+                "vrf": "",
+                "taskId_h": "",
+                "propName_h": "",
+                "oldPropName_h": "",
+                "allowedOwners": "system",
+                "allowedToShareWith": [
+                    "all"
+                ],
+                "childForms": {
+                    "clock0": {
+                        "nodeType": "clock",
+                        "clock-time-zone": "IST 5 30",
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ]
+                    },
+                    "service-timestamps1": {
+                        "nodeType": "service-timestamps",
+                        "service-timestamps-debug": true,
+                        "service-timestamps-log": true,
+                        "service-password-encryption": true,
+                        "enable-secret": false,
+                        "enable-secret-password": "",
+                        "tcp-keepalives-in": true,
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ]
+                    },
+                    "local-credentials2": {
+                        "nodeType": "local-credentials",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                             "local-credential0": {
+                                "nodeType": "local-credential",
+                                "name": "vsnl",
+                                "enable-privilege": false,
+                                "privilege-level": null,
+                                "password": "",
+                                "secret-level": "5",
+                                "privilege-secret": "$1$KLHA$5VgJ1L.C1HXl36oINfw6Z.",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "local-credential1": {
+                                "nodeType": "local-credential",
+                                "name": "emergency",
+                                "password": "",
+                                "enable-privilege": true,
+                                "privilege-level": 15,
+                                "secret-level": "5",
+                                "privilege-secret": "$1$6QUN$gpcV3yLQl2NkPFiKBdP3x/",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            }
+                        }
+                    },
+                    "console3": {
+                        "nodeType": "console",
+                        "console-line": 0,
+                        "exec-timeout": 5,
+                        "privilege-level": 0,
+                        "logging-synchronous": true,
+                        "no-password": false,
+                        "auth-type": "",
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ]
+                    },
+                     "dns-lUZ7T0C7TNmPMrU9NrzcKg": {
+            "domain-name": "tata.com",
+            "nodeType": "dns"
+          },
+                    "vty-conf4": {
+                        "nodeType": "vty-conf",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                          "vty0": {
+                                "nodeType": "vty",
+                                "name": "line vty 5 15",
+                                "timeout-in-sec": 0,
+                                "timeout-in-min": 5,
+                                "min-vty": 5,
+                                "max-vty": 15,
+                                "transport-type": null,
+                                "acl": "TATA-MNGT-ACCESS",
+                                "auth-type": "",
+                                "vrf-also": true,
+                                "logging-synchronous": true,
+                                "history-size": null,
+                                "no-privilege-level": 15,
+                                "no-password": false,
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "vty1": {
+                                "nodeType": "vty",
+                                "name": "line vty 0 4",
+                                "timeout-in-sec": 0,
+                                "timeout-in-min": 5,
+                                "min-vty": 0,
+                                "max-vty": 4,
+                                "transport-type": null,
+                                "acl": "TATA-MNGT-ACCESS",
+                                "auth-type": "",
+                                "vrf-also": true,
+                                "logging-synchronous": true,
+                                "history-size": null,
+                                "no-privilege-level": 15,
+                                "no-password": false,
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            }
+                        }
+                    },
+                    "named-access-lists5": {
+                        "nodeType": "named-access-lists",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                            "acl0": {
+                                "nodeType": "acl",
+                                "acl-name": "TATA-MONITORING-SNMP",
+                                "acl-type": "standard",
+                                "remark": "",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    
+                                    "match-condition1": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition4",
+                                        "sequence-number": 20,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "121.244.180.47",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition2": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition6",
+                                        "sequence-number": 40,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "121.244.180.37",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition3": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition10",
+                                        "sequence-number": 100,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "121.244.227.114",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition4": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition5",
+                                        "sequence-number": 30,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "121.244.180.36",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition5": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition11",
+                                        "sequence-number": 999,
+                                        "source-condition-type": "any",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "deny",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                   
+                                    "match-condition7": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition9",
+                                        "sequence-number": 70,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "121.244.227.113",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": "host",
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition8": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition7",
+                                        "sequence-number": 80,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.226.164",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition9": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition88",
+                                        "sequence-number": 90,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.9.67",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition10": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition99",
+                                        "sequence-number": 110,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.9.68",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition11": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition111",
+                                        "sequence-number": 110,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.9.68",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition12": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition112",
+                                        "sequence-number": 120,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "10.70.0.202",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition13": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition113",
+                                        "sequence-number": 130,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "10.70.0.199",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition14": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition114",
+                                        "sequence-number": 140,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "202.54.29.81",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition15": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition115",
+                                        "sequence-number": 150,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "172.31.6.123",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition16": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition116",
+                                        "sequence-number": 160,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "202.54.29.25",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition17": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition117",
+                                        "sequence-number": 170,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.219.35",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition18": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition118",
+                                        "sequence-number": 180,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.146.71",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition19": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition119",
+                                        "sequence-number": 190,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.146.70",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition20": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition200",
+                                        "sequence-number": 200,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.146.69",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition21": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition210",
+                                        "sequence-number": 210,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "202.54.29.27",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                      "match-condition22": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition220",
+                                        "sequence-number": 220,
+                                        "source-condition-type": "cidr",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.226.160",
+                                        "source-ipv4-address-mask": "0.0.0.31",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition23": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition230",
+                                        "sequence-number": 230,
+                                        "source-condition-type": "cidr",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.219.32",
+                                        "source-ipv4-address-mask": "0.0.0.15",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                      "match-condition24": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition240",
+                                        "sequence-number": 240,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "121.244.180.49",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition25": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition250",
+                                        "sequence-number": 250,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "14.143.102.155",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition26": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition260",
+                                        "sequence-number": 260,
+                                        "source-condition-type": "cidr",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "{{WAN_SUPERNET | getnetworkadd}}",
+                                        "source-ipv4-address-mask": "{{WAN_SUPERNET | getwildcardmask}}",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    }
+                                }
+                            },
+                            "acl1": {
+                                "nodeType": "acl",
+                                "acl-name": "TATA-MNGT-ACCESS",
+                                "acl-type": "standard",
+                                "remark": "",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "match-condition1": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition4",
+                                        "sequence-number": 20,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "121.244.180.47",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition2": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition6",
+                                        "sequence-number": 40,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "121.244.180.37",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition3": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition10",
+                                        "sequence-number": 100,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "121.244.227.114",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition4": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition5",
+                                        "sequence-number": 30,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "121.244.180.36",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition5": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition11",
+                                        "sequence-number": 999,
+                                        "source-condition-type": "any",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "deny",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                   
+                                    "match-condition7": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition9",
+                                        "sequence-number": 70,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "121.244.227.113",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": "host",
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition8": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition7",
+                                        "sequence-number": 80,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.226.164",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition9": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition88",
+                                        "sequence-number": 90,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.9.67",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition10": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition99",
+                                        "sequence-number": 110,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.9.68",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition11": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition111",
+                                        "sequence-number": 110,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.9.68",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition12": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition112",
+                                        "sequence-number": 120,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "10.70.0.202",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition13": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition113",
+                                        "sequence-number": 130,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "10.70.0.199",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition14": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition114",
+                                        "sequence-number": 140,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "202.54.29.81",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition15": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition115",
+                                        "sequence-number": 150,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "172.31.6.123",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition16": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition116",
+                                        "sequence-number": 160,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "202.54.29.25",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition17": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition117",
+                                        "sequence-number": 170,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.219.35",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition18": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition118",
+                                        "sequence-number": 180,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.146.71",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition19": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition119",
+                                        "sequence-number": 190,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.146.70",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "match-condition20": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition200",
+                                        "sequence-number": 200,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.146.69",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition21": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition210",
+                                        "sequence-number": 210,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "202.54.29.27",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                      "match-condition22": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition220",
+                                        "sequence-number": 220,
+                                        "source-condition-type": "cidr",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.226.160",
+                                        "source-ipv4-address-mask": "0.0.0.31",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition23": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition230",
+                                        "sequence-number": 230,
+                                        "source-condition-type": "cidr",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.114.219.32",
+                                        "source-ipv4-address-mask": "0.0.0.15",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                      "match-condition24": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition240",
+                                        "sequence-number": 240,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "121.244.180.49",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition25": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition250",
+                                        "sequence-number": 250,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "14.143.102.155",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition26": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition260",
+                                        "sequence-number": 260,
+                                        "source-condition-type": "cidr",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "{{WAN_SUPERNET | getnetworkadd}}",
+                                        "source-ipv4-address-mask": "{{WAN_SUPERNET | getwildcardmask}}",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "features6": {
+                        "nodeType": "features",
+                        "cdp": "disable",
+                        "domain-lookup": "disable",
+                        "tcp-small-servers": "disable",
+                        "udp-small-servers": "disable",
+                        "finger": "disable",
+                        "source-route": "disable",
+                        "bootp-server": "disable",
+                        "http-server": "disable",
+                        "http-secure-server": "disable",
+                        "banner-exec": null,
+                        "banner-exec-string": "",
+                        "banner-login": null,
+                        "banner-login-string": "",
+                        "banner-motd": null,
+                        "banner-motd-string": "",
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ]
+                    },
+                   
+                    "aaa8": {
+                        "nodeType": "aaa",
+                        "tacacs-server-group": "IPP",
+                        "source-interface": "Loopback0",
+                        "aaa-new-model": true,
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                            "aaa-servers-private0": {
+                                "nodeType": "aaa-servers-private",
+                                "aaa-server-ip": "115.114.151.107",
+                                "privilege-level": 7,
+                                "privilege-key": "071965425A0A35550413",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "aaa-servers-private1": {
+                                "nodeType": "aaa-servers-private",
+                                "aaa-server-ip": "115.114.151.114",
+                                "privilege-level": 7,
+                                "privilege-key": "021040551F0523715F4F",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            }
+                        }
+                    },
+                    "snmp9": {
+                        "nodeType": "snmp",
+                        "snmp-ifmib-ifindex-persist": true,
+                        "trap-source": "Loopback0",
+                        "system-shutdown": false,
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                            "snmp-traps0": {
+                                "nodeType": "snmp-traps",
+                                "trap": "snmp authentication linkdown linkup coldstart warmstart",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "snmp-traps1": {
+                                "nodeType": "snmp-traps",
+                                "trap": "memory bufferpeak",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            
+                            "snmp-traps3": {
+                                "nodeType": "snmp-traps",
+                                "trap": "cpu threshold",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "snmp-traps4": {
+                                "nodeType": "snmp-traps",
+                                "trap": "ipsla",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "snmp-community5": {
+                                "nodeType": "snmp-community",
+                                "community-string": "t2c2l2com",
+                                "permision-type": "RO",
+                                "acl-name": "TATA-MONITORING-SNMP",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                             "snmp-community6": {
+                                "nodeType": "snmp-community",
+                                "community-string": "{{CUSTOMER_TREEGRAM | lower}}#vsnl",
+                                "permision-type": "RO",
+                                "acl-name": "TATA-MONITORING-SNMP",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "snmp-traps7": {
+                                "nodeType": "snmp-traps",
+                                "trap": "event-manager",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            }
+                        }
+                    },
+                    "ntp10": {
+                        "nodeType": "ntp",
+                        "access-group-name": "",
+                        "ntp-source-interface": "Loopback0",
+                        "update-calendar": false,
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                            "ntp-server0": {
+                                "nodeType": "ntp-server",
+                                "ntp-server-ip": "121.244.196.47",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "ntp-server1": {
+                                "nodeType": "ntp-server",
+                                "ntp-server-ip": "121.244.196.46",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            }
+                        }
+                    },
+                    "eem-scripts12": {
+                        "nodeType": "eem-scripts",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                            "eem-script0": {
+                                "nodeType": "eem-script",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "eem-cpu-threshold0": {
+                                        "nodeType": "eem-cpu-threshold",
+                                        "rising-threshold": 70,
+                                        "rising-threshold-interval": 40,
+                                        "falling-threshold": 1,
+                                        "falling-threshold-interval": 5,
+                                        "variable1": "$_syslog_msg",
+                                        "variable2": "$_regexp_result",
+                                        "variable3": "$id",
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "eem-mem-threshold1": {
+                                        "nodeType": "eem-mem-threshold",
+                                        "enable-mem-threshold-eem": true,
+                                        "variable1": "$_snmp_oid_val",
+                                        "variable2": "$_snmp_oid_val",
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "eem-bgp-adj2": {
+                                        "nodeType": "eem-bgp-adj",
+                                        "enable-bgp-adj-eem": true,
+                                        "variable1": "$_syslog_msg",
+                                        "variable2": "$_regexp_result",
+                                        "variable3": "$id",
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "eem-if-errors3": {
+                                        "nodeType": "eem-if-errors",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ],
+                                        "childForms": {
+                                            "interface0": {
+                                                "nodeType": "interface",
+                                                "if-tag": "if_1",
+                                                "interface-name": "{{WAN_INTERFACE_NAME}}",
+                                                "correlate": "event if_1",
+                                                "variable1": "$_interface_name",
+                                                "variable2": "$_interface_delta_value",
+                                                "variable3": "$_interface_value",
+                                                "taskId_h": "",
+                                                "propName_h": "",
+                                                "oldPropName_h": "",
+                                                "allowedOwners": "system",
+                                                "allowedToShareWith": [
+                                                    "all"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "syslog13": {
+                        "nodeType": "syslog",
+                        "logging-source-interface": "Loopback0",
+                        "buffer-size": 16384,
+                        "logging-trap": "debugging",
+                        "logging-facility": "local5",
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                            "logging-host0": {
+                                "nodeType": "logging-host",
+                                "host": "10.70.0.201",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "logging-host1": {
+                                "nodeType": "logging-host",
+                                "host": "10.209.19.200",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                             "logging-host2": {
+                                "nodeType": "logging-host",
+                                "host": "121.240.6.13",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                             "logging-host3": {
+                                "nodeType": "logging-host",
+                                "host": "121.240.5.113",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "logging-host4": {
+                                "nodeType": "logging-host",
+                                "host": "121.240.118.90",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "logging-host5": {
+                                "nodeType": "logging-host",
+                                "host": "115.114.170.78",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                             "logging-host6": {
+                                "nodeType": "logging-host",
+                                "host": "202.54.29.110",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            }
+                        }
+                    },
+                   
+                    "tacacs15": {
+            "tacacs-server-group": "IPP",
+            
+            "nodeType": "tacacs",
+            "timeout": 3
+          }
+                }
+            }
+        }
+    }
+}

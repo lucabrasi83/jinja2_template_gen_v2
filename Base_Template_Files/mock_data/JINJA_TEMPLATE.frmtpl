@@ -1,0 +1,291 @@
+{
+    "schemaPath": "/controller:services/cpedeployment:managed-cpe-services/customer/dps/dps-services",
+    "root0": {
+        "childForms": {
+            "dps-services0": {
+                "nodeType": "dps-services",
+                "name": "{{ site_name }}-DPS",
+                "single-cpe-site": false,
+                "single-cpe-sites": null,
+                "dual-cpe-site": true,
+                "dual-cpe-sites": "{{ site_name }}",
+                "single-cpe-dual-wan-site": false,
+                "single-cpe-dual-wan-sites": null,
+                "dual-cpe-dual-wan-site": false,
+                "dual-cpe-dual-wan-sites": null,
+                "triple-cpe-site": false,
+                "triple-cpe-sites": null,
+                "taskId_h": "",
+                "propName_h": "",
+                "oldPropName_h": "",
+                "allowedOwners": "system",
+                "allowedToShareWith": [
+                    "all"
+                ],
+                "childForms": {
+                    "cpe-name0": {
+                        "nodeType": "cpe-name",
+                        "cpe": "cpe-primary",
+                        "vrf": null,
+                        "lan-interface": true,
+                        "hierarchical-inbound-policy": false,
+                        "hierarchical-policy": null,
+                        "inbound-policy": null,
+                        "pbr-policy": "DPS-POLICY-DUAL-CPE | system",
+                        "next-hop-ip": "{{ dps_b2b_subnet | getipfromsub(2) }}",
+                        "vrf-receive": false,
+                        "bgp-policy": false,
+                        "bgp-policy-qos": true,
+                        "b2b-interface": true,
+                        "vlan-id": "{{ dps_b2b_vlan_id }}",
+                        {% if "10.91.73" in dps_b2b_subnet %}
+                        "cidr": "CGB-B2B-POOL2_10.91.73.0_{{ dps_b2b_subnet }}",
+                        {% elif "10.91.79" in dps_b2b_subnet %}
+                        "cidr": "CGB-B2B-POOL3_10.91.79.0_24_{{ dps_b2b_subnet }}",
+                        {% elif "10.91.72" in dps_b2b_subnet %}
+                        "cidr": "CGB-B2B-POOL1_10.91.72.0_24_{{ dps_b2b_subnet }}",
+                        {% endif %}
+                        "interface-ip": "{{ dps_b2b_subnet | getipfromsub(1) }}",
+                        "b2b-description": "[B2B LOG: DPS]",
+                        "loopback": false,
+                        "loopback-interface-id": null,
+                        "description": "",
+                        "cidr-loopback": "",
+                        "loopback-ip": "",
+                        "ospf": true,
+                        "ospf-id": 100,
+                        "router-id": "",
+                        "static-route-map": "STATIC-TO-OSPF | system",
+                        "connected-route-map": "CONNECTED-TO-OSPF | system",
+                        "lan-ospf-redistribution": false,
+                        "ospf-route-map": null,
+                        "ospf-metric": null,
+                        "ospf-metric-type": null,
+                        "ospf-tag": null,
+                        "ospf-redistribution-id": null,
+                        "lan-ebgp-redistribution": false,
+                        "bgp-route-map": null,
+                        "bgp-metric": null,
+                        "bgp-metric-type": null,
+                        "bgp-tag": null,
+                        "lan-eigrp-redistribution": false,
+                        "eigrp-as": null,
+                        "eigrp-route-map": null,
+                        "eigrp-metric": null,
+                        "eigrp-metric-type": null,
+                        "eigrp-tag": null,
+                        "vrf-lite": false,
+                        "bgp": true,
+                        "bgp-vrf": null,
+                        "qppb-policy": "DPS-QPPB-POLICY-IZO | system",
+                        "redistribute-connected": null,
+                        "redistribute-static": null,
+                        "import-route-map": null,
+                        "tunnel": false,
+                        "hub": false,
+                        "dmvpn-profile": null,
+                        "tunnel-interface-ip-address": "",
+                        "tunnel-bandwidth": null,
+                        "tunnel-interface-description": "",
+                        "tunnel-fvrf": null,
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                            "ospf-networks0": {
+                                "nodeType": "ospf-networks",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "ospf-network0": {
+                                        "nodeType": "ospf-network",
+                                        "name": "B2B-OSPF-PRI",
+                                        "ospf-id": 100,
+                                        "prefix": "{{ dps_b2b_subnet | getipfromsub(1) }}/32",
+                                        "area": 1,
+                                        "nssa": true,
+                                        "vrf-name": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    }
+                                }
+                            }
+                           
+                        }
+                    },
+                    "cpe-name1": {
+                        "nodeType": "cpe-name",
+                        "cpe": "cpe-secondary",
+                        "vrf": "DPS | system",
+                        "lan-interface": false,
+                        "hierarchical-inbound-policy": false,
+                        "hierarchical-policy": null,
+                        "inbound-policy": null,
+                        "pbr-policy": null,
+                        "next-hop-ip": "",
+                        "vrf-receive": false,
+                        "bgp-policy": false,
+                        "bgp-policy-qos": false,
+                        "b2b-interface": true,
+                        "vlan-id": "{{ dps_b2b_vlan_id }}",
+                        {% if "10.91.73" in dps_b2b_subnet %}
+                        "cidr": "CGB-B2B-POOL2_10.91.73.0_{{ dps_b2b_subnet }}",
+                        {% elif "10.91.79" in dps_b2b_subnet %}
+                        "cidr": "CGB-B2B-POOL3_10.91.79.0_24_{{ dps_b2b_subnet }}",
+                        {% elif "10.91.72" in dps_b2b_subnet %}
+                        "cidr": "CGB-B2B-POOL1_10.91.72.0_24_{{ dps_b2b_subnet }}",
+                        {% endif %}
+                        "interface-ip": "{{ dps_b2b_subnet | getipfromsub(2) }}",
+                        "b2b-description": "[B2B LOG: DPS]",
+                        "loopback": true,
+                        "loopback-interface-id": 100,
+                        "description": "",
+                        "cidr-loopback": "CGB-DPS-LOOPBACK-POOL_{{ dps_loopback_ip }}/32 | system",
+                        "loopback-ip": "{{ dps_loopback_ip }}",
+                        "ospf": true,
+                        "ospf-id": 100,
+                        "router-id": "",
+                        "static-route-map": null,
+                        "connected-route-map": null,
+                        "lan-ospf-redistribution": false,
+                        "ospf-route-map": null,
+                        "ospf-metric": null,
+                        "ospf-metric-type": null,
+                        "ospf-tag": null,
+                        "ospf-redistribution-id": null,
+                        "lan-ebgp-redistribution": false,
+                        "bgp-route-map": null,
+                        "bgp-metric": null,
+                        "bgp-metric-type": null,
+                        "bgp-tag": null,
+                        "lan-eigrp-redistribution": false,
+                        "eigrp-as": null,
+                        "eigrp-route-map": null,
+                        "eigrp-metric": null,
+                        "eigrp-metric-type": null,
+                        "eigrp-tag": null,
+                        "vrf-lite": true,
+                        "bgp": true,
+                        "bgp-vrf": null,
+                        "qppb-policy": null,
+                        "redistribute-connected": null,
+                        "redistribute-static": null,
+                        "import-route-map": null,
+                        "tunnel": true,
+                        "hub": false,
+                        "dmvpn-profile": "CGB-DMVPN-TUNNEL100 | system",
+                        "tunnel-interface-ip-address": "{{ dps_tunnel_interface_ip }}",
+                        "tunnel-bandwidth": null,
+                        "tunnel-interface-description": "",
+                        "tunnel-fvrf": null,
+                        "taskId_h": "",
+                        "propName_h": "",
+                        "oldPropName_h": "",
+                        "allowedOwners": "system",
+                        "allowedToShareWith": [
+                            "all"
+                        ],
+                        "childForms": {
+                            "ospf-networks0": {
+                                "nodeType": "ospf-networks",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "ospf-network0": {
+                                        "nodeType": "ospf-network",
+                                        "name": "B2B-OSPF-SEC",
+                                        "ospf-id": 100,
+                                        "prefix": "{{ dps_b2b_subnet | getipfromsub(2) }}/32",
+                                        "area": 1,
+                                        "nssa": true,
+                                        "vrf-name": "DPS | system",
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                    "ospf-network1": {
+                                        "nodeType": "ospf-network",
+                                        "name": "TUNNEL100-OSPF",
+                                        "ospf-id": 100,
+                                        "prefix": "{{ dps_tunnel_interface_ip }}/32",
+                                        "area": 0,
+                                        "nssa": false,
+                                        "vrf-name": "DPS | system",
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    }
+                                }
+                            },
+                           
+                            "static-routes2": {
+                                "nodeType": "static-routes",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ],
+                                "childForms": {
+                                    "static-route0": {
+                                        "nodeType": "static-route",
+                                        "dest-ip-address": "0.0.0.0",
+                                        "dest-mask": "0.0.0.0",
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ],
+                                        "childForms": {
+                                            "options0": {
+                                                "nodeType": "options",
+                                                "id": "1",
+                                                "next-hop-ip": "{{ dps_b2b_subnet | getipfromsub(1) }}",
+                                                "global-address": false,
+                                                "metric": null,
+                                                "interface-name": "{{ secondary_cpe_b2b_phy_interface_name | getiffullname(dps_b2b_vlan_id) }}",
+                                                "name": "DPS-ESCAPE-ROUTE",
+                                                "vrf": "DPS | system",
+                                                "tag": null,
+                                                "track": null,
+                                                "permanent": false,
+                                                "taskId_h": "",
+                                                "propName_h": "",
+                                                "oldPropName_h": "",
+                                                "allowedOwners": "system",
+                                                "allowedToShareWith": [
+                                                    "all"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
