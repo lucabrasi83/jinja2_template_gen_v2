@@ -4,8 +4,8 @@
         "childForms": {
             "day1service0": {
                 "nodeType": "day1service",
-                "name": "HAU-FR-EUFRCLI-G-MPLS-02-R-1_MGMT",
-                "device-ip": "HAU-FR-EUFRCLI-G-MPLS-02-R-1",
+                "name": "{{CPE_NAME}}_MGMT",
+                "device-ip": "{{CPE_NAME}}",
                 "vrf": "",
                 "taskId_h": "",
                 "propName_h": "",
@@ -49,13 +49,14 @@
                             "all"
                         ],
                         "childForms": {
-                            "local-credential0": {
+                             "local-credential0": {
                                 "nodeType": "local-credential",
-                                "name": "asd3ngineer1ng",
+                                "name": "local",
+                                "enable-privilege": false,
+                                "privilege-level": null,
                                 "password": "",
-                                "enable-privilege": true,
-                                "privilege-level": 15,
-                                "privilege-secret": "asdtd@cmds0c",
+                                "secret-level": "5",
+                                "privilege-secret": "$1$bo1D$yyYLYj5m1wLFo9fr7pvoO1",
                                 "taskId_h": "",
                                 "propName_h": "",
                                 "oldPropName_h": "",
@@ -66,11 +67,12 @@
                             },
                             "local-credential1": {
                                 "nodeType": "local-credential",
-                                "name": "local",
-                                "password": "remote",
-                                "enable-privilege": false,
-                                "privilege-level": null,
-                                "privilege-secret": "",
+                                "name": "asd3ngineer1ng",
+                                "password": "",
+                                "enable-privilege": true,
+                                "privilege-level": 15,
+                                "secret-level": "5",
+                                "privilege-secret": "$1$KSR5$9FaCDVd8ADjcNYM6bDUgE1",
                                 "taskId_h": "",
                                 "propName_h": "",
                                 "oldPropName_h": "",
@@ -114,7 +116,7 @@
                                 "transport-type": null,
                                 "acl": "TATA-MNGT-ACCESS",
                                 "auth-type": "",
-                                "vrf-also": false,
+                                "vrf-also": true,
                                 "logging-synchronous": true,
                                 "history-size": null,
                                 "no-privilege-level": 15,
@@ -137,7 +139,7 @@
                                 "transport-type": null,
                                 "acl": "TATA-MNGT-ACCESS",
                                 "auth-type": "",
-                                "vrf-also": false,
+                                "vrf-also": true,
                                 "logging-synchronous": true,
                                 "history-size": null,
                                 "no-privilege-level": 15,
@@ -265,29 +267,7 @@
                                             "all"
                                         ]
                                     },
-                                    "match-condition5": {
-                                        "nodeType": "match-condition",
-                                        "match-condition-name": "condition11",
-                                        "sequence-number": 999,
-                                        "source-condition-type": "any",
-                                        "cidr": false,
-                                        "cidr-value": "",
-                                        "source-ipv4-address": "",
-                                        "source-ipv4-address-mask": "",
-                                        "dest-condition-type": null,
-                                        "cidr-destination-value": "",
-                                        "destination-ipv4-address": "",
-                                        "destination-ipv4-address-mask": "",
-                                        "action": "deny",
-                                        "match-packets": "log",
-                                        "taskId_h": "",
-                                        "propName_h": "",
-                                        "oldPropName_h": "",
-                                        "allowedOwners": "system",
-                                        "allowedToShareWith": [
-                                            "all"
-                                        ]
-                                    },
+                                    
                                    
                                     "match-condition7": {
                                         "nodeType": "match-condition",
@@ -319,8 +299,8 @@
                                         "source-condition-type": "cidr",
                                         "cidr": false,
                                         "cidr-value": "",
-                                        "source-ipv4-address": "115.114.0.0",
-                                        "source-ipv4-address-mask": "0.0.255.255",
+                                        "source-ipv4-address": "115.114.221.0",
+                                        "source-ipv4-address-mask": "0.255.255.255",
                                         "dest-condition-type": null,
                                         "cidr-destination-value": "",
                                         "destination-ipv4-address": "",
@@ -343,6 +323,52 @@
                                         "cidr": false,
                                         "cidr-value": "",
                                         "source-ipv4-address": "64.86.228.42",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition10": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition100",
+                                        "sequence-number": 120,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.110.215.73",
+                                        "source-ipv4-address-mask": "",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    },
+                                     "match-condition11": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition101",
+                                        "sequence-number": 130,
+                                        "source-condition-type": "host",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "115.110.215.74",
                                         "source-ipv4-address-mask": "",
                                         "dest-condition-type": null,
                                         "cidr-destination-value": "",
@@ -396,29 +422,7 @@
                                             "all"
                                         ]
                                     },
-                                    "match-condition1": {
-                                        "nodeType": "match-condition",
-                                        "match-condition-name": "condition14",
-                                        "sequence-number": 999,
-                                        "source-condition-type": "any",
-                                        "cidr": false,
-                                        "cidr-value": "",
-                                        "source-ipv4-address": "",
-                                        "source-ipv4-address-mask": "",
-                                        "dest-condition-type": null,
-                                        "cidr-destination-value": "",
-                                        "destination-ipv4-address": "",
-                                        "destination-ipv4-address-mask": "",
-                                        "action": "deny",
-                                        "match-packets": "log",
-                                        "taskId_h": "",
-                                        "propName_h": "",
-                                        "oldPropName_h": "",
-                                        "allowedOwners": "system",
-                                        "allowedToShareWith": [
-                                            "all"
-                                        ]
-                                    },
+                                    
                                     "match-condition2": {
                                         "nodeType": "match-condition",
                                         "match-condition-name": "condition11",
@@ -449,8 +453,8 @@
                                         "source-condition-type": "cidr",
                                         "cidr": false,
                                         "cidr-value": "",
-                                        "source-ipv4-address": "115.114.0.0",
-                                        "source-ipv4-address-mask": "0.0.255.255",
+                                        "source-ipv4-address": "115.114.221.0",
+                                        "source-ipv4-address-mask": "0.255.255.255",
                                         "dest-condition-type": null,
                                         "cidr-destination-value": "",
                                         "destination-ipv4-address": "",
@@ -579,7 +583,56 @@
                                         "allowedToShareWith": [
                                             "all"
                                         ]
+                                    },
+                                     "match-condition140": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition140",
+                                        "sequence-number": 140,
+                                        "source-condition-type": "cidr",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "{{WAN_SUPERNET | getnetworkadd}}",
+                                        "source-ipv4-address-mask": "{{WAN_SUPERNET | getwildcardmask}}",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
                                     }
+                                    {% if B2B_SUPERNET %}
+                                    ,
+                                     "match-condition150": {
+                                        "nodeType": "match-condition",
+                                        "match-condition-name": "condition150",
+                                        "sequence-number": 150,
+                                        "source-condition-type": "cidr",
+                                        "cidr": false,
+                                        "cidr-value": "",
+                                        "source-ipv4-address": "{{B2B_SUPERNET | getnetworkadd}}",
+                                        "source-ipv4-address-mask": "{{B2B_SUPERNET | getwildcardmask}}",
+                                        "dest-condition-type": null,
+                                        "cidr-destination-value": "",
+                                        "destination-ipv4-address": "",
+                                        "destination-ipv4-address-mask": "",
+                                        "action": "permit",
+                                        "match-packets": null,
+                                        "taskId_h": "",
+                                        "propName_h": "",
+                                        "oldPropName_h": "",
+                                        "allowedOwners": "system",
+                                        "allowedToShareWith": [
+                                            "all"
+                                        ]
+                                    }
+                                    {% endif %}
                                 }
                             }
                         }
@@ -700,7 +753,7 @@
                                 "nodeType": "snmp-host",
                                 "host": "121.244.196.10",
                                 "version": "2c",
-                                "snmp-community": "Tcl4HAU",
+                                "snmp-community": "Tcl4{{CUSTOMER_TRIGRAM | upper}}",
                                 "taskId_h": "",
                                 "propName_h": "",
                                 "oldPropName_h": "",
@@ -733,9 +786,10 @@
                             },
                             "snmp-community5": {
                                 "nodeType": "snmp-community",
-                                "community-string": "Tcl4HAU",
+                                "community-string": "Tcl4{{CUSTOMER_TRIGRAM | upper}}",
                                 "permision-type": "RW",
                                 "acl-name": "TATA-MONITORING-SNMP",
+                                "add_monolith_snmpv3": "true",
                                 "taskId_h": "",
                                 "propName_h": "",
                                 "oldPropName_h": "",
@@ -754,13 +808,39 @@
                                 "allowedToShareWith": [
                                     "all"
                                 ]
+                            },
+                             "snmp-host7": {
+                                "nodeType": "snmp-host",
+                                "host": "115.110.215.73",
+                                "version": "2c",
+                                "snmp-community": "Tcl4{{CUSTOMER_TRIGRAM | upper}}",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
+                            },
+                            "snmp-host8": {
+                                "nodeType": "snmp-host",
+                                "host": "115.110.215.74",
+                                "version": "2c",
+                                "snmp-community": "Tcl4{{CUSTOMER_TRIGRAM | upper}}",
+                                "taskId_h": "",
+                                "propName_h": "",
+                                "oldPropName_h": "",
+                                "allowedOwners": "system",
+                                "allowedToShareWith": [
+                                    "all"
+                                ]
                             }
                         }
                     },
                     "ntp10": {
                         "nodeType": "ntp",
                         "access-group-name": "",
-                        "ntp-source-interface": "Giga1",
+                        "ntp-source-interface": "Loopback0",
                         "update-calendar": false,
                         "taskId_h": "",
                         "propName_h": "",
@@ -862,7 +942,7 @@
                                             "interface0": {
                                                 "nodeType": "interface",
                                                 "if-tag": "if_1",
-                                                "interface-name": "GigabitEthernet0/0/0",
+                                                "interface-name": "{{WAN_PHY_INTERFACE}}",
                                                 "correlate": "event if_1",
                                                 "variable1": "$_interface_name",
                                                 "variable2": "$_interface_delta_value",
@@ -918,6 +998,7 @@
                             }
                         }
                     },
+                    {% if NETFLOW_ENABLED %}
                     "netflow14": {
                         "nodeType": "netflow",
                         "allowedOwners": "system",
@@ -1130,7 +1211,7 @@
                                                 "nodeType": "flow-export",
                                                 "name": "IZO-PRIME-EXPORT",
                                                 "description": "FNF v9",
-                                                "destination": "121.244.196.28",
+                                                "destination": "{{NETFLOW_COLLECTOR_IP}}",
                                                 "source": "Loopback0",
                                                 "udp-port-value": 9996,
                                                 "template-timeout": null,
@@ -1195,7 +1276,7 @@
                                                         "childForms": {
                                                             "interface0": {
                                                                 "nodeType": "interface",
-                                                                "interface": "GigabitEthernet0/0",
+                                                                "interface": "{{WAN_INTERFACE}}",
                                                                 "taskId_h": "",
                                                                 "propName_h": "",
                                                                 "oldPropName_h": "",
@@ -1214,7 +1295,7 @@
                             }
                         }
                     },
-                    
+                    {% endif %}
                     "tacacs15": {
             "tacacs-server-group": "asd",
             
