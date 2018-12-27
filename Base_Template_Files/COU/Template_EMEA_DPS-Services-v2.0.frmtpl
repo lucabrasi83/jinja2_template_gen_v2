@@ -79,7 +79,7 @@
             "hub": false,
             "dmvpn-profile": "COU-EMEA-DPS-PROFILE | system",
             "tunnel-interface-ip-address": "{{R1_DPS_TUN100_IP}}",
-            "tunnel-bandwidth": {{R1_DPS_TUN100_BW}},
+            "tunnel-bandwidth": "{{R1_DPS_TUN100_BW}}",
             "tunnel-interface-description": "[DPS DMVPN]",
             "tunnel-fvrf": null,
             "taskId_h": "",
