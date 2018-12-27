@@ -1213,7 +1213,7 @@
                 "p2p": false,
                 "tunnel-interface-ip-address": "{{R1_ZS_TUN501_IP}}",
                 "tunnel-interface-mask": "255.255.255.252",
-                "tunnel-interface-destination": "{{ZS_TUN501_DST_IP}}",
+                "tunnel-interface-destination": "{{R1_ZS_TUN501_DST_IP}}",
                 "tunnel-interface-id": 501,
                 "tunnel-source": "Loopback1",
                 "tunnel-bandwidth": {{R1_ZS_SERVICE_BW}},
